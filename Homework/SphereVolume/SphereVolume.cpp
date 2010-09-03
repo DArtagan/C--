@@ -15,16 +15,20 @@ int main()
     double radius;
     double volume;
     
+    /*  Title  */
+    cout << "-- Compute the Volume of a Sphere --" << endl << endl;
+    
     /*  Prompt user for volume and units  */
     cout << "Enter the radius, with units, of the sphere (radius units):" << endl;
     cin >> radius >> units;
+    cout << endl << endl;
     
     /*  Calculates volume using: V=(4/3)pi(radius)^3 */
     volume = four_thirds * pi * pow(radius,3);
     
     /*  Output volume with guiding text */
-    cout << "The volume of the sphere is  " <<  volume;
-    cout <<  units << " cubed." << endl;
+    cout << "The volume of the sphere is " <<  volume;
+    cout << " " << units << " cubed." << endl << endl << endl;
     
     system("PAUSE");
     //  Exit program.
