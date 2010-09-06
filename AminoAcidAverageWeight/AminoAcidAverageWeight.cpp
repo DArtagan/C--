@@ -8,27 +8,43 @@ using namespace std;
 int main()
 {
     /*  Declare/Identify Variables  */
-    double kelvin;
-    double fahrenheit;
-    double rankin;
-    const double nine_fifths = 9/5.0;  // For the conversion between Kelvin and Rankin
-    const double fahrenheit_conversion = 459.67;  // For the conversion between Rankin and Fahrenheit
+    int oxygen;
+    int carbon;
+    int nitrogen;
+    int sulfur;
+    int hydrogen;
+    int total_atoms;
+    double molecular_weight;
+    double average_weight;
+    const double weight_oxygen = 15.9994;
+    const double weight_carbon = 12.011;
+    const double weight_nitrogen = 14.00674;
+    const double weight_sulfur = 32.066;
+    const double weight_hydrogen = 1.00794;
     
     /*  Prompt for Kelvin  */
-    cout << "Convert Kelvin to Fahrenheit" << endl << endl;
-    cout << "Enter temperature in Kelvin (K), to be converted:" << endl;
-    cin >> kelvin;
+    cout << "Average weight of the atoms in an amino acid" << endl << endl;
+    cout << "Enter how many of each of the prompted element atoms are present in an amino acid." << endl;
+    cout << "Oxygen: " << flush;
+    cin >> oxygen;
+    cout << "Carbon: " << flush;
+    cin >> carbon;
+    cout << "Nitrogen: " << flush;
+    cin >> nitrogen;
+    cout << "Sulfur: " << flush;
+    cin >> sulfur;
+    cout << "Hydrogen: " << flush;
+    cin >> hydrogen;
     
-    /*  Conversion  */
-    //  Multiply the given temperature Kelvin by the conversion factor (9/5 to find the equivalent temperature in Rankin.
-    rankin = nine_fifths * kelvin;
-    //  Subtract 459.67 from the Rankin temperature to get degrees Fahrenheit.
-    fahrenheit = rankin - fahrenheit_conversion;
+    /*  Calculations  */
+    total_atoms = oxygen + carbon + nitrogen + sulfur + hydrogen;
+    molecular_weight = oxygen * weight_oxygen + carbon * weight_carbon + nitrogen * weight_nitrogen + sulfur * weight_sulfur + hydrogen * weight_hydrogen;
+    average_weight = molecular_weight / total_atoms;
         
     /*  Output result with guiding text  */
-    cout << endl << endl << kelvin << " Kelvin ==> ";
-    cout << fahrenheit << " degrees Fahrenheit";
-    cout << endl << endl << endl;
+    cout << endl << endl << total_atoms << endl;
+    cout << molecular_weight << endl;
+    cout << average_weight << endl << endl;
     
     system("PAUSE");
     //  Exit Program
