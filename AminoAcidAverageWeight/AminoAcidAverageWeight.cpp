@@ -22,9 +22,9 @@ int main()
     const double weight_sulfur = 32.066;
     const double weight_hydrogen = 1.00794;
     
-    /*  Prompt for Kelvin  */
-    cout << "Average weight of the atoms in an amino acid" << endl << endl;
-    cout << "Enter how many of each of the prompted element atoms are present in an amino acid." << endl;
+    /*  Prompt for Atom Amounts  */
+    cout << "-- Average Weight of the Atoms in an Amino Acid --" << endl << endl;
+    cout << "When prompted, enter the number of atoms for each element of the amino acid." << endl << endl;
     cout << "Oxygen: " << flush;
     cin >> oxygen;
     cout << "Carbon: " << flush;
@@ -37,14 +37,14 @@ int main()
     cin >> hydrogen;
     
     /*  Calculations  */
-    total_atoms = oxygen + carbon + nitrogen + sulfur + hydrogen;
-    molecular_weight = oxygen * weight_oxygen + carbon * weight_carbon + nitrogen * weight_nitrogen + sulfur * weight_sulfur + hydrogen * weight_hydrogen;
-    average_weight = molecular_weight / total_atoms;
+    total_atoms = oxygen + carbon + nitrogen + sulfur + hydrogen; // The number of atoms in the molecule
+    molecular_weight = oxygen * weight_oxygen + carbon * weight_carbon + nitrogen * weight_nitrogen + sulfur * weight_sulfur + hydrogen * weight_hydrogen;  // The molecular weight of the molecule, found be multiplying all the atoms by their elemental weights.  
+    average_weight = molecular_weight / total_atoms;  // The average atomic mass, found by dividing the molecular weight by the total nubmer of atoms.
         
-    /*  Output result with guiding text  */
-    cout << endl << endl << total_atoms << endl;
-    cout << molecular_weight << endl;
-    cout << average_weight << endl << endl;
+    /*  Output average atomic weight with guiding text  */
+    cout << endl;
+    cout << "The average atomic weight of your amino acid is: " << average_weight;
+    cout << endl << endl << endl;
     
     system("PAUSE");
     //  Exit Program
