@@ -1,5 +1,5 @@
 //
-//  Program to compare 3 boolean variables and determine if the value of the following condition is true of false: ! (a&&b&&c) && !(a||b||c)
+//  Program to output an ASCII code for a given character, and state what kind of character it is.
 //
 #include <cstdlib>
 #include <iostream>
@@ -15,7 +15,7 @@ int main()
     cout << "Enter a character: " << flush;
     cin >> charVar;
         
-    /*  Out put code with character and state what kind of character it is.  */
+    /*  Output ASCII code with character, and state what kind of character it is.  */
     cout << endl << endl;
     cout << "The ASCII code of " << charVar << " is " << int(charVar) << ".  ";
     if (charVar >= '0' && charVar <= '9') {
@@ -25,7 +25,7 @@ int main()
     } else if (charVar >= 'a' && charVar <= 'z') {
         cout << charVar << " is a lower-case letter." << endl;
     } else {
-        cout << charVar << " is not an upper-case, lower-case, or digit." << endl;
+        cout << charVar << " is not an upper-case letter, lower-case letter, or a digit." << endl;
     }
     cout << endl << endl << endl;
     
