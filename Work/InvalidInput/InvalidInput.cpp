@@ -13,6 +13,9 @@ int main()
     double interest;
     int years;
     double final;
+    const double interest_UpperBound = 100;
+    const int years_UppperBound = 60
+    const int years_LowerBound = 2
     
     /*  Prompt for variable value  */
     cout << "-- Display the ASCII code for a character --" << endl << endl;
@@ -36,7 +39,7 @@ int main()
             //  Exit Program
             return 0;
         }
-    } else if (!(interest > 0 && interest < 100)) {
+    } else if (!(interest > 0 && interest < interest_UpperBound)) {
         cout << "The given interest rate must be greater than 0% and less than 100%." << endl;
         cout << "Please, input a valid interest rate: " << flush;
         cin >> interest;   
@@ -50,12 +53,12 @@ int main()
             //  Exit Program
             return 0;
         }
-    } else if (!(years >= 2 && years <= 60)) {
+    } else if (!(years >= years_LowerBound && years <= years_UppperBound)) {
         cout << "For this program, the years can be any whole number from 2 to 60." << endl;
         cout << "Please, input a valid number of years: " << flush;
         cin >> years;   
         cout << endl;
-        if (!(years >= 2 && years <= 60)) {
+        if (!(years >= years_LowerBound && years <= years_UppperBound)) {
             cout << "Once again your year was not any of whole nubmer from 2 to 60." << endl;
             cout << "Banking is for the educated classes.  I bid you good day." << endl;
             cout << endl << endl << endl;
@@ -66,10 +69,12 @@ int main()
     }
         
     /*  Calculate the amount after time */
-    // A= P(1+r/n)^(nt)
+    //  The formula for interest compounded monthly is :A = P(1+r/12)^(12*t).  In the context of this program, that is: 
+    final = pow((dollars (1 + interest / 12)),(12*years))
     
     /*  Output ASCII code with character, and state what kind of character it is.  */
     cout << endl << endl;
+    cout << final;
     cout << endl << endl << endl;
     
     system("PAUSE");
