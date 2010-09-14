@@ -1,5 +1,5 @@
 //
-//  Program to output an ASCII code for a given character, and state what kind of character it is.
+//  Program to give the total for an investment, over some years at an interest rate.
 //
 #include <cstdlib>
 #include <iostream>
@@ -14,14 +14,17 @@ int main()
     int years;
     double final;
     const double interest_UpperBound = 100;
-    const int years_UppperBound = 60
-    const int years_LowerBound = 2
+    const int years_UppperBound = 60;
+    const int years_LowerBound = 2;
+    const int compoundings = 12;
     
     /*  Prompt for variable value  */
-    cout << "-- Display the ASCII code for a character --" << endl << endl;
-    cout << "Enter a character: " << flush;
+    cout << "-- Output the total for an investment, over some years at an interest rate. --" << endl << endl;
+    cout << "Enter the initial dollar amount (it must be greater than 0): " << flush;
     cin >> dollar;
+    cout << "Enter the interest rate (between 0 and 100 percent): " << flush;
     cin >> interest;
+    cout << "Enter the years to let the program run for (between 2 and 60): " << flush;
     cin >> years;
     cout << endl;
     
@@ -69,13 +72,15 @@ int main()
     }
         
     /*  Calculate the amount after time */
-    //  The formula for interest compounded monthly is :A = P(1+r/12)^(12*t).  In the context of this program, that is: 
-    final = pow((dollars (1 + interest / 12)),(12*years))
+    //  The formula for interest compounded monthly is: A = P(1+r/12)^(12*t).  In the context of this program, that is: final = dollar * (1 + (interest / compoundings))^(compoundings * years);
+    interest = interest / 100;
+    final = dollar * pow((1 + (interest / compoundings)),(compoundings * years));
     
-    /*  Output ASCII code with character, and state what kind of character it is.  */
-    cout << endl << endl;
-    cout << final;
-    cout << endl << endl << endl;
+    /*  Output the final dollar amount with other guiding information  */
+    cout << endl;
+    cout << "After time has passed, " << dollar << " dollars invested at " << 100 * interest << " percent interest for " << years << " years," << endl;
+    cout << " gives you " << final << " dollars after that time has passed.";
+    cout << endl << endl << endl << endl;
     
     system("PAUSE");
     //  Exit Program
