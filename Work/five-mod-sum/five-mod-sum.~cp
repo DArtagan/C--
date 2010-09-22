@@ -21,7 +21,7 @@ int main()
     
     /*  Loop to find all numbers  */
     while (!(value == (n+1))) {
-        if (!(0 == value % 2 || 0 == value % 3 || 0 == value % 5 || 0 == value % 7 || 0 == value % 11)) {
+        if ((0 != value % 2) && (0 != value % 3) && (0 != value % 5) && (0 != value % 7) && (0 != value % 11)) {
             sum += value;
             counter++;
         }
