@@ -1,5 +1,5 @@
 //
-//  Program to find how many prime numbers there are from 3 to a user defined 'n', and what the largest prime number therein is.
+//  Program to find and count the number of invalid characters in a file
 //
 #include <cstdlib>
 #include <iostream>
@@ -8,46 +8,34 @@ using namespace std;
 
 int main()
 {
-    /*  Declare/Identify Variables  */
-    
-    /*  Ask for final value  */
-    cout << "--  --" << endl << endl;
-    cout << "";
+   
+    /*  Heading  */
+    cout << "-- Find all the invalid characters in a program --" << endl << endl;
     cout << endl;
     
-    /*  Read File and Display Ivalid Characters  */
-    ifstream inFile( "INTDATA1" );
+    /*  Check if file exists and open it  */
+    ifstream inFile( "INTDATA" );
     if( !inFile ) {
         cout << "Error opening file." << endl;
+        system("PAUSE");
         exit(1);
     }
     
+    /*  Find all invalid characters  */
     int counter(0);
     char data;
     while( inFile >> data ) {
-        cout << int( 'data' );
-        if((data >= '0' && data <= '9') || data == '-' || data == '+' ) {
-            cout << 'data';
-        }
-        if( !int( 'data' ) ) {
+        if(!((data >= '0' && data <= '9') || data == '-' || data == '+' )) {
             cout << data;
             counter++;
         }
     }
-    /*while ( inFile >> data ) {
-        if ( ++counter % 2 ) {
-        cout << counter << " " << data
-            << endl;
-        }
-    }*/
-    
-    cout << "Total " << counter << " data points." << endl;
     
     inFile.close();
 
-    /*  Display Results with Guiding Text  */
-    cout << endl;
-    cout << "";
+    /*  Display Counter Result with Guiding Text  */
+    cout << endl << endl;
+    cout << counter << " invalid characters found." << endl;
     cout << endl << endl << endl << endl;
     
     system("PAUSE");

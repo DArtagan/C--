@@ -26,8 +26,8 @@ int main()
     char data;
     while( inFile >> data ) {
         cout << int( 'data' );
-        if(data >= '0' && data <= '9') {
-            cout << data;
+        if((data >= '0' && data <= '9') || data == '-' || data == '+' ) {
+            cout << 'data';
         }
         if( !int( 'data' ) ) {
             cout << data;
