@@ -9,10 +9,8 @@ using namespace std;
 int main()
 {
     /*  Declare/Identify Variables  */
-    string ad;
     string output;
-    char advice
-    char
+    char advice;
     int counter(0);
 
     /*  Open file for reading, check for validity  */
@@ -33,41 +31,6 @@ int main()
     
     /*  Close Files  */
     inFile.close();
-
-    /*  Open file for writing, check for validity  */
-    ofstream outFile( "OUTPUT" );
-    if( !outFile ) {
-        cout << "Error opening file." << endl;
-        system("PAUSE");
-        exit(1);
-    }
-
-    /*  Ask for Advice  */
-    
-    
-    /*  Open file  */
-    
-    ofstream outFile( ADVICE.TXT" );
-    if( !outFile ) {
-        cout << "Error opening file." << endl;
-        system("PAUSE");
-        exit(1);
-    }
-    
-    /*  Shift the characters  */
-    while( counter < 2 ) {
-        getline(inFile, output, '/n')
-        if (output == "") {
-            counter++;
-    }
-
-    /*  Close File  */
-    outFile.close();
-    
-    /*  Concluding Text  */
-    cout << endl << endl;
-    cout << "";
-    cout << endl << endl << endl << endl;
 
     system("PAUSE");
     //  Exit Program

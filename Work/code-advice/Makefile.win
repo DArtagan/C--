@@ -1,0 +1,30 @@
+# Project: code-advice
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = code-advice.o $(RES)
+LINKOBJ  = code-advice.o $(RES)
+LIBS =  -L"C:/sw/Dev-Cpp/lib"  
+INCS =  -I"C:/sw/Dev-Cpp/include" 
+CXXINCS =  -I"C:/sw/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/sw/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/sw/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/sw/Dev-Cpp/include/c++/3.4.2"  -I"C:/sw/Dev-Cpp/include" 
+BIN  = code-advice.exe
+CXXFLAGS = $(CXXINCS)   -g -Wall -pedantic -ansi
+CFLAGS = $(INCS)   -g -Wall -pedantic -ansi
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before code-advice.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "code-advice.exe" $(LIBS)
+
+code-advice.o: code-advice.cpp
+	$(CPP) -c code-advice.cpp -o code-advice.o $(CXXFLAGS)
