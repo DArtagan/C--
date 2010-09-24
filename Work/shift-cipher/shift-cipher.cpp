@@ -1,5 +1,5 @@
 //
-//  Program to find and count the number of invalid characters in a file
+//  Program to shift the alphanumeric characters in a file and output them to another file, in the style of a shift-cypher
 //
 #include <cstdlib>
 #include <iostream>
@@ -15,7 +15,7 @@ int main()
     
     /*  Ask for final value  */
     cout << "-- Shift Cipher --" << endl << endl;
-    cout << "Enter a shift value: " << flush;
+    cout << "Enter a value by which to shift the characters: " << flush;
     cin >> shift; 
     cout << endl;
     
@@ -26,7 +26,6 @@ int main()
         system("PAUSE");
         exit(1);
     }
-    
     ofstream outFile( "OUTPUT" );
     if( !outFile ) {
         cout << "Error opening file." << endl;
@@ -36,30 +35,23 @@ int main()
     
     /*  Shift the characters  */
     while( inFile >> inChar ) {
-        if( inChar >= '0' && inChar <= '9' ) { // ASCII codes sequential from 0-9 
-            // reduce the inChar down to the range 0-9 by subtracting off the ASCII code of zero
+        if( inChar >= '0' && inChar <= '9' ) {
             outChar = inChar - '0';
-            // Now add the shift AND the value 10, so that even if shift is -9, the result is positive.
             outChar += 10 + shift;
-            // Use modulus to make sure the value is between 0 and 9 again
             outChar %= 10;
-            // Add the ASCII code of zero back, shoving the result back into the proper region of the ASCII table
             outChar += '0';
-            
-            // outChar now holds the properly shifted character code, regardless of whether
-            // shift is positive, negative, or zero.
-        }
-        if( inChar >= 'a' && inChar <= 'z' ) { // ASCII codes sequential from 0-9 
+        } else if( inChar >= 'a' && inChar <= 'z' ) {
             outChar = inChar - 'a';
             outChar += 26 + shift;
             outChar %= 26;
             outChar += 'a';
-        }
-        if( inChar >= 'A' && inChar <= 'Z' ) { // ASCII codes sequential from 0-9 
+        } else if ( inChar >= 'A' && inChar <= 'Z' ) {
             outChar = inChar - 'A';
             outChar += 26 + shift;
             outChar %= 26;
             outChar += 'A';
+        } else {
+            outChar = inChar;
         }
         outFile << outChar;
     }
@@ -68,9 +60,9 @@ int main()
     inFile.close();
     outFile.close();
 
-    /*  Display Counter Result with Guiding Text  */
+    /*  Concluding Text  */
     cout << endl << endl;
-    cout << "Your shifted message is now stored in a file called OUTPUT in the same directory as this program.";
+    cout << "Your shifted message is now stored in a file called 'OUTPUT' in the same directory as this program.";
     cout << endl << endl << endl << endl;
     
     system("PAUSE");
