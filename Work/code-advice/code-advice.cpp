@@ -40,20 +40,22 @@ int main()
     }
     
     /*  Prompt for, and store, advice  */
-    while( getline( cin, outAdvice, '/n' )) {
-        cout << counter++ << ": ";
-        cout << outAdvice << endl;
-    }
-    /*cout << "Type your advice for a future generation.  End your message with a double return." << endl << endl;
-        while(getline(cin, outAdvice, '/n')) {
-           outFile << outAdvice;
-        }*/
+    cout << "Type your advice for a future generation.  End your message with two blank line." << endl << endl;
+        while(counter < 2) {
+           getline(cin, outAdvice);
+           if( outAdvice == "") {
+                counter++;
+                outFile << endl;
+            } else {
+                counter = 0;
+            }
+           outFile << outAdvice << endl;
+        }
 
     
     /*  Close Write File  */
     outFile.close();
 
-    system("PAUSE");
     //  Exit Program
     return 0;
 }

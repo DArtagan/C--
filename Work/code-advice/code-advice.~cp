@@ -10,6 +10,7 @@ int main()
 {
     /*  Declare/Identify Variables  */
     string inAdvice;
+    string outAdvice;
     int counter(0);
 
     /*  Open file for reading, check for validity  */
@@ -38,17 +39,16 @@ int main()
         exit(1);
     }
     
-    /*  Prompt for, and store advice  */
-    cout << "Type your advice for a future generation.  End your message with a double return." << endl << endl;
-    while(counter < 3) {
-        while(getline(cin, outAdvice, '/n')) {
-            if(outAdvice == "") {
-                outFile << outAdvice;
-                counter++;
-            }
-            outFile << outAdvice
-        }
+    /*  Prompt for, and store, advice  */
+    while( getline( cin, outAdvice, '/n' )) {
+        cout << counter++ << ": ";
+        cout << outAdvice << endl;
     }
+    /*cout << "Type your advice for a future generation.  End your message with a double return." << endl << endl;
+        while(getline(cin, outAdvice, '/n')) {
+           outFile << outAdvice;
+        }*/
+
     
     /*  Close Write File  */
     outFile.close();
