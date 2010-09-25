@@ -9,6 +9,7 @@ using namespace std;
 int main()
 {
     /*  Declare/Identify Variables  */
+<<<<<<< HEAD
     string ad;
     string output;
     char advice
@@ -37,30 +38,66 @@ int main()
     /*  Open file for writing, check for validity  */
     ofstream outFile( "OUTPUT" );
     if( !outFile ) {
+=======
+    string inAdvice;
+    string outAdvice;
+    int counter(0);
+
+    /*  Open file for reading, check for validity  */
+    ifstream inFile( "ADVICE.TXT" );
+    if( !inFile ) {
+>>>>>>> incremental
         cout << "Error opening file." << endl;
         system("PAUSE");
         exit(1);
     }
 
+<<<<<<< HEAD
     /*  Ask for Advice  */
     
     
     /*  Open file  */
     
     ofstream outFile( ADVICE.TXT" );
+=======
+    /*  Display Advice  */
+    cout << "-- Code-Advice --" << endl << endl;
+    while(getline(inFile, inAdvice)) {
+        cout << inAdvice << endl;
+    }
+    cout << endl << endl;
+
+    /*  Close Read File  */
+    inFile.close();
+    
+    /*  Open file for reading, check for validity  */
+    ofstream outFile( "ADVICE.TXT" );
+>>>>>>> incremental
     if( !outFile ) {
         cout << "Error opening file." << endl;
         system("PAUSE");
         exit(1);
     }
     
+<<<<<<< HEAD
     /*  Shift the characters  */
     while( counter < 2 ) {
         getline(inFile, output, '/n')
         if (output == "") {
             counter++;
+=======
+    /*  Prompt for, and store, advice  */
+    while( getline( cin, outAdvice, '/n' )) {
+        cout << counter++ << ": ";
+        cout << outAdvice << endl;
+>>>>>>> incremental
     }
+    /*cout << "Type your advice for a future generation.  End your message with a double return." << endl << endl;
+        while(getline(cin, outAdvice, '/n')) {
+           outFile << outAdvice;
+        }*/
 
+<<<<<<< HEAD
     /*  Close File  */
     outFile.close();
     
@@ -68,6 +105,11 @@ int main()
     cout << endl << endl;
     cout << "";
     cout << endl << endl << endl << endl;
+=======
+    
+    /*  Close Write File  */
+    outFile.close();
+>>>>>>> incremental
 
     system("PAUSE");
     //  Exit Program
