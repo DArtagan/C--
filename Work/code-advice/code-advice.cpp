@@ -1,5 +1,5 @@
 //
-//  Program to shift the alphanumeric characters in a file and output them to another file, in the style of a shift-cypher
+//  Program to display then ask for coding advice
 //
 #include <cstdlib>
 #include <iostream>
@@ -26,7 +26,6 @@ int main()
     while(getline(inFile, inAdvice)) {
         cout << inAdvice << endl;
     }
-    cout << endl << endl;
 
     /*  Close Read File  */
     inFile.close();
@@ -40,7 +39,7 @@ int main()
     }
     
     /*  Prompt for, and store, advice  */
-    cout << "Type your advice for a future generation.  End your message with two blank line." << endl << endl;
+    cout << "Type your advice for a future generation.  End your message with two blank lines." << endl << endl;
         while(counter < 2) {
            getline(cin, outAdvice);
            if( outAdvice == "") {
