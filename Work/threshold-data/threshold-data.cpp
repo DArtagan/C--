@@ -9,9 +9,16 @@ using namespace std;
 int main()
 {
     /*  Declare/Identify Variables  */
-    int array[64];
-    int test(0);
-    int size(64);
+    const int MAX(64);
+    int storarray[MAX] = {};
+    int size;
+    int lower;
+    int upper(0);
+    int counter(0);
+    double threshup(.9);
+    double threshdown(.1);
+    double realthreshup;
+    double realthreshdown;
     
 	/*  Header  */
     cout << "-- Threshhold Filter --" << endl << endl;
@@ -25,18 +32,34 @@ int main()
         exit(1);
     }	
 	
-	/*  Test DATA size  */
-	while(inFile >> test) {
-        size++;
+	/*  Find size bounds and store data  */
+    
+    inFile >> lower;
+    while (inFile >> size) {
+    if( !(inFile >> size)) {
+        cout << "You have bad data.";
     }
-	if( !(inFile >> size)) {
-        cout << "There are too many data files for the array." << endl << endl;
-        system("PAUSE");
-        exit(1);
+        if(size < lower) {
+            lower = size;
+        }
+        if(size > upper) {
+            upper = size;
+        }
+        storarray[counter] = size;
+        counter++;
+    }
+    
+    /*  Calculate the thresholds  */
+    realthreshup = ( ( upper - lower ) * threshup + lower ); 
+    realthreshdown = ( ( upper - lower ) * threshdown + lower );
+    
+    cout << lower << " , " << upper << endl;
+    cout << realthreshup << " , " << realthreshdown << endl ;
+    for(int i=0; i <= 63; i++) {
+        cout << storarray[i] << " ";
     }
 
     /*  Read File into Array  */
-    
 
 	/*  Concluding Text  */
     cout << endl << endl;
