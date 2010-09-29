@@ -1,5 +1,5 @@
 //
-//  Program to
+//  Program to convert the values in a file to 0, 1, or 2 depending on given bounds for the threshold filter.
 //
 #include <cstdlib>
 #include <iostream>
@@ -12,6 +12,7 @@ int main()
     const int MAX(64);
     int storarray[MAX] = {};
     int size;
+    int value;
     int lower;
     int upper(0);
     int counter(0);
@@ -34,12 +35,12 @@ int main()
 	
 	/*  Find size bounds and store data  */
     
-    inFile >> lower;
-    while (inFile >> size) {
-    if( !(inFile >> size)) {
-        cout << "You have bad data.";
-    }
-        if(size < lower) {
+    inFile >> size;
+    while (inFile >> value) {
+        if( !(inFile >> value)) {
+            cout << "You have bad data.";
+        }
+        if(value < lower) {
             lower = size;
         }
         if(size > upper) {
@@ -51,19 +52,29 @@ int main()
     
     /*  Calculate the thresholds  */
     realthreshup = ( ( upper - lower ) * threshup + lower ); 
-    realthreshdown = ( ( upper - lower ) * threshdown + lower );
-    
-    cout << lower << " , " << upper << endl;
-    cout << realthreshup << " , " << realthreshdown << endl ;
-    for(int i=0; i <= 63; i++) {
-        cout << storarray[i] << " ";
+    realthreshdown = ( ( upper - lower ) * threshdown + lower ); 
+
+    for(int i=0; i <= (counter - 1); i++) {
+        cout << storarray[i];
     }
 
-    /*  Read File into Array  */
+    /*  Convert Files  */
+    for(int i = 0;i <= counter;i++) {
+        if(storarray[i] < realthreshdown) {
+            storarray[i] = 0;
+        } else if(storarray[i] >= realthreshdown && storarray[i] <= realthreshup) {
+            storarray[i] = 1;
+        } else {
+            storarray[i] = 2;
+        }
+    }    
 
 	/*  Concluding Text  */
-    cout << endl << endl;
-    cout << "";
+    cout << endl;
+    cout << "Your new matrix looks like: " << endl;
+    for(int i=0; i <= (counter - 1); i++) {
+        cout << storarray[i];
+    }
     cout << endl << endl << endl << endl;    
     
 	/*  Close Write File  */
