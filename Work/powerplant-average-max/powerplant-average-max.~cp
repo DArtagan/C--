@@ -12,7 +12,7 @@ int main()
     const int NROWS(50);
     const int NCOLS(7);
     double powerarray[NROWS][NCOLS] = {};
-    double value;
+    double test;
     int counter(0);
     //string WEEKDAYS[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     
@@ -28,34 +28,26 @@ int main()
         exit(1);
     }	
     
-    /*  Count number of data points  */
-    while(inFile >> value) {
+    /*  Count data points  */
+    while(inFile >> test) {
         counter++;
     }
-    
-    /*  Check inFile size  */
-    if (counter > (NROWS) * (NCOLS)) {
-        cout << "Your input file is too big." << endl << endl << endl;
-        system("PAUSE");
-        exit(1);
-    }
+    cout << counter;
     
     /*  Store data into array  */
-    for( int i(0); i < NROWS; i++) {
+    for( int i(0); i < (counter - (counter % NCOLS)); i++) {
         for( int j(0); j < NCOLS; j++) {
             if( !(inFile >> powerarray[i][j])) break;
         }
     }
 
 	/*  Concluding Text  */
-    cout << endl << endl;
-    for( int i(0); i <= ((counter - (counter % NCOLS)) / NCOLS); i++) {
-        for(int j(0); (i < NROWS && j < NCOLS) || (i = NROWS && j < (counter % NCOLS)); j++) {
-            cout << powerarray[i][j] << " , ";
+    for( int i(0); i < NROWS; i++) {
+        for( int j(0); j < NCOLS && (i * NCOLS + j) < counter; j++) {
+            cout << powerarray[i][j];
         }
         cout << endl;
     }
-    cout << endl << endl << endl << endl;    
     
 	/*  Close Write File  */
     inFile.close();
