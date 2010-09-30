@@ -14,7 +14,7 @@ int main()
     double powerarray[NROWS][NCOLS] = {};
     double value;
     int counter(0);
-    string WEEKDAYS[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    //string WEEKDAYS[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     
 	/*  Header  */
     cout << "-- Powerplant Average Maximum --" << endl << endl;

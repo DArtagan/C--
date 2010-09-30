@@ -50,7 +50,7 @@ int main()
 	/*  Concluding Text  */
     cout << endl << endl;
     for( int i(0); i <= ((counter - (counter % NCOLS)) / NCOLS); i++) {
-        for(int j(0); (i < NROWS && j < NCOLS) || (i = NROWS && j < (counter % NCOLS)); j++) {
+        for(int j(0); (i < NROWS && j < NCOLS) || (i == NROWS && j < (counter % NCOLS)); j++) {
             cout << powerarray[i][j] << " , ";
         }
         cout << endl;
