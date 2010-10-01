@@ -13,8 +13,6 @@ int main()
     const int NROWS(10);
     const int NCOLS(7);
     double powerarray[NROWS][NCOLS] = {};
-    double test;
-    int counter(0);
     double maxpower;
     string WEEKDAYS[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     int maxday;
