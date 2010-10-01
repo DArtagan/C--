@@ -1,9 +1,10 @@
 //
-//  Program to
+//  Program to find the maximum power output in a set of data, and what day it occured
 //
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 
 int main()
@@ -15,11 +16,12 @@ int main()
     double test;
     int counter(0);
     double maxpower;
-    //string WEEKDAYS[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    string WEEKDAYS[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    int maxday;
+    int maxweek;
     
 	/*  Header  */
     cout << "-- Powerplant Average Maximum --" << endl << endl;
-    cout << endl;
     
 	/*  Open file for reading, check for validity  */
     ifstream inFile( "power1.dat" );
@@ -28,21 +30,12 @@ int main()
         system("PAUSE");
         exit(1);
     }	
-    
-    //while(inFile >> test) {
-    //    cout << test;
-    //}
-    
-    /*  Count data points  */
-    while(inFile >> test) {
-        counter++;
-    }
-    
+
     /*  Store data into array  */
     for( int i(0); i<NROWS; i++ ) {
-        for( int j(0); j<NCOL; j++ ) {
+        for( int j(0); j<NCOLS; j++ ) {
             if( !( inFile >> powerarray[i][j] ) ) {
-                cout << "The data file ran into a read error!";
+                cout << "The data contains an invalid point.";
                 break; // read error
             }
             if(  powerarray[i][j] > maxpower ) {
@@ -50,16 +43,20 @@ int main()
             }
         }
     }
-    /* The program will no
 
 	/*  Concluding Text  */
-    for( int i(0);i < (counter - (counter % NCOLS)) / NCOLS; i++) {
-        for( int j(0); j < NCOLS && (i * NCOLS + j) < counter; j++) {
-            cout << powerarray[i][j];
+	cout << "There was a maximum power during:";
+    for( int i(0);i < NROWS; i++) {
+        for( int j(0); j < NCOLS; j++) {
+			if ( powerarray[i][j] == maxpower) {
+        		maxday = j;
+        		maxweek = i+1;
+        		cout << endl << WEEKDAYS[maxday] << " of week " << maxweek;
+            }
         }
-        cout << endl;
     }
-    cout << endl << endl;
+    cout << endl << endl << "The maximum was " << maxpower << "."; 
+    cout << endl << endl << endl;
     
 	/*  Close Write File  */
     inFile.close();
