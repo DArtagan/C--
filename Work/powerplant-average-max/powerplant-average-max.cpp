@@ -9,11 +9,12 @@ using namespace std;
 int main()
 {
     /*  Declare/Identify Variables  */
-    const int NROWS(50);
+    const int NROWS(10);
     const int NCOLS(7);
     double powerarray[NROWS][NCOLS] = {};
     double test;
     int counter(0);
+    double maxpower;
     //string WEEKDAYS[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     
 	/*  Header  */
@@ -28,17 +29,28 @@ int main()
         exit(1);
     }	
     
+    //while(inFile >> test) {
+    //    cout << test;
+    //}
+    
     /*  Count data points  */
     while(inFile >> test) {
         counter++;
     }
     
     /*  Store data into array  */
-     for( int i(0);i < (counter - (counter % NCOLS)) / NCOLS; i++) {
-        for( int j(0); j < NCOLS && (i * NCOLS + j) < counter; j++) {
-            if( inFile >> powerarray[i][j]) break;
+    for( int i(0); i<NROWS; i++ ) {
+        for( int j(0); j<NCOL; j++ ) {
+            if( !( inFile >> powerarray[i][j] ) ) {
+                cout << "The data file ran into a read error!";
+                break; // read error
+            }
+            if(  powerarray[i][j] > maxpower ) {
+                maxpower = powerarray[i][j];
+            }
         }
     }
+    /* The program will no
 
 	/*  Concluding Text  */
     for( int i(0);i < (counter - (counter % NCOLS)) / NCOLS; i++) {
