@@ -32,22 +32,22 @@ int main()
     while(inFile >> test) {
         counter++;
     }
-    cout << counter;
     
     /*  Store data into array  */
-    for( int i(0); i < (counter - (counter % NCOLS)); i++) {
-        for( int j(0); j < NCOLS; j++) {
-            if( !(inFile >> powerarray[i][j])) break;
+     for( int i(0);i < (counter - (counter % NCOLS)) / NCOLS; i++) {
+        for( int j(0); j < NCOLS && (i * NCOLS + j) < counter; j++) {
+            if( inFile >> powerarray[i][j]) break;
         }
     }
 
 	/*  Concluding Text  */
-    for( int i(0); i < NROWS; i++) {
+    for( int i(0);i < (counter - (counter % NCOLS)) / NCOLS; i++) {
         for( int j(0); j < NCOLS && (i * NCOLS + j) < counter; j++) {
             cout << powerarray[i][j];
         }
         cout << endl;
     }
+    cout << endl << endl;
     
 	/*  Close Write File  */
     inFile.close();
