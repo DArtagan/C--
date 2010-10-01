@@ -56,6 +56,9 @@ int main()
         outFile << outChar;
     }
 
+// adsf
+// asdf
+
     /*  Close Files  */
     inFile.close();
     outFile.close();
