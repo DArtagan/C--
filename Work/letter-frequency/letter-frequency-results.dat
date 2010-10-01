@@ -1,0 +1,203 @@
+FOR FILE alice-in-wonderland.txt
+     COUNT    LETTER
+     15030         e
+     11597         t
+       135         q
+        79         z
+LEAST CANDIDATES
+ z
+2nd-LEAST CANDIDATES
+ q
+MOST CANDIDATES 
+ e
+2nd-MOST CANDIDATES 
+ t
+FOR FILE alice-in-wonderland.txt
+     COUNT    LETTER
+       831         I
+       716         A
+         6         X
+         1         Z
+LEAST CANDIDATES
+ Z
+2nd-LEAST CANDIDATES
+ X
+MOST CANDIDATES 
+ I
+2nd-MOST CANDIDATES 
+ A
+
+FOR FILE amusements-in-mathematics.txt
+     COUNT    LETTER
+     82662         e
+     60692         t
+      1875         x
+       529         j
+LEAST CANDIDATES
+ j
+2nd-LEAST CANDIDATES
+ x
+MOST CANDIDATES 
+ e
+2nd-MOST CANDIDATES 
+ t
+FOR FILE amusements-in-mathematics.txt
+     COUNT    LETTER
+      4262         T
+      4130         I
+       195         Q
+        94         X
+LEAST CANDIDATES
+ X
+2nd-LEAST CANDIDATES
+ Q
+MOST CANDIDATES 
+ T
+2nd-MOST CANDIDATES 
+ I
+
+FOR FILE letter-frequency-edge-1.txt
+     COUNT    LETTER
+         5         z
+         4         y
+         2         b
+         1         a
+LEAST CANDIDATES
+ a
+2nd-LEAST CANDIDATES
+ b
+MOST CANDIDATES 
+ z
+2nd-MOST CANDIDATES 
+ y
+FOR FILE letter-frequency-edge-1.txt
+     COUNT    LETTER
+         5         S
+         4         R
+         2         U
+         1         T
+LEAST CANDIDATES
+ T
+2nd-LEAST CANDIDATES
+ U
+MOST CANDIDATES 
+ S
+2nd-MOST CANDIDATES 
+ R
+
+FOR FILE letter-frequency-edge-2.txt
+     COUNT    LETTER
+         5         y
+         4         z
+         2         a
+         1         b
+LEAST CANDIDATES
+ b
+2nd-LEAST CANDIDATES
+ a
+MOST CANDIDATES 
+ y
+2nd-MOST CANDIDATES 
+ z
+FOR FILE letter-frequency-edge-2.txt
+     COUNT    LETTER
+         5         Q
+         4         R
+         2         S
+         1         T
+LEAST CANDIDATES
+ T
+2nd-LEAST CANDIDATES
+ S
+MOST CANDIDATES 
+ Q
+2nd-MOST CANDIDATES 
+ R
+
+FOR FILE letter-frequency-results.dat
+     COUNT    LETTER
+        38         e
+        34         t
+         0         p
+         0         k
+LEAST CANDIDATES
+ k p v
+2nd-LEAST CANDIDATES
+ h j o w
+MOST CANDIDATES 
+ e
+2nd-MOST CANDIDATES 
+ t
+FOR FILE letter-frequency-results.dat
+     COUNT    LETTER
+       105         T
+        92         A
+         0         G
+         0         B
+LEAST CANDIDATES
+ B G H J K P V W Y
+2nd-LEAST CANDIDATES
+ Z
+MOST CANDIDATES 
+ T
+2nd-MOST CANDIDATES 
+ A
+
+FOR FILE the-count-of-monte-cristo.txt
+     COUNT    LETTER
+    259239         e
+    175266         t
+      1730         j
+      1491         z
+LEAST CANDIDATES
+ z
+2nd-LEAST CANDIDATES
+ j
+MOST CANDIDATES 
+ e
+2nd-MOST CANDIDATES 
+ t
+FOR FILE the-count-of-monte-cristo.txt
+     COUNT    LETTER
+     10400         I
+      5934         M
+        40         Q
+        12         Z
+LEAST CANDIDATES
+ Z
+2nd-LEAST CANDIDATES
+ Q
+MOST CANDIDATES 
+ I
+2nd-MOST CANDIDATES 
+ M
+
+FOR FILE war-and-peace.txt
+     COUNT    LETTER
+    312908         e
+    219552         t
+      2280         z
+      2264         j
+LEAST CANDIDATES
+ j
+2nd-LEAST CANDIDATES
+ z
+MOST CANDIDATES 
+ e
+2nd-MOST CANDIDATES 
+ t
+FOR FILE war-and-peace.txt
+     COUNT    LETTER
+      7400         I
+      6434         T
+       108         Z
+        35         Q
+LEAST CANDIDATES
+ Q
+2nd-LEAST CANDIDATES
+ Z
+MOST CANDIDATES 
+ I
+2nd-MOST CANDIDATES 
+ T
+
