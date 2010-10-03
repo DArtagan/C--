@@ -19,6 +19,7 @@ int main()
 	int LetterResults[2][4] = {};
     char letter;
     int counter(0);
+	int range(LAST_LOWERCASE - FIRST_LOWERCASE);
     
 	/*  Open file for reading, check for validity  */
     ifstream inFile( "INPUT.TXT" );
@@ -41,27 +42,34 @@ int main()
     
 	/*  Find Letters  */
 	for(int i(0); i<26; i++) {
+	// Most
 		if(LetterCounts[i] > LetterResults[0][0]) {
 			LetterResults [0][0] = LetterCounts[i];
 			LetterResults[1][0] = i;
 		}
+	// Second Most
 		if(LetterCounts[i] > LetterResults[0][1] && LetterCounts[i] < LetterResults[0][0]) {
 			LetterResults [0][1] = LetterCounts[i];
 			LetterResults[1][1] = i;
 		}
 	}
-	LetterResults[0][2] = LetterResults[0][0];
+	//  Least
 	LetterResults[0][3] = LetterResults[0][0];
 	for(int i(0); i<26; i++) {
-		if(LetterCounts[i] < LetterResults[0][2]) {
-			LetterResults [0][2] = LetterCounts[i];
-			LetterResults[1][2] = i;
-		}
-		if(LetterCounts[i] < LetterResults[0][3] && LetterCounts[i] > LetterResults[0][2]) {
+		if(LetterCounts[i] < LetterResults[0][3]) {
 			LetterResults [0][3] = LetterCounts[i];
 			LetterResults[1][3] = i;
 		}
 	}
+	//  Second Least
+	LetterResults[0][2] = LetterResults[0][0];
+	for(int i(0); i<26; i++) {
+		if(LetterCounts[i] < LetterResults[0][2] && LetterCounts[i] > LetterResults[0][3]) {
+			LetterResults [0][2] = LetterCounts[i];
+			LetterResults[1][2] = i;
+		}
+	}
+	
 	
 	/*  Concluding Text  */
 	for(int i(0); i<4; i++) {
