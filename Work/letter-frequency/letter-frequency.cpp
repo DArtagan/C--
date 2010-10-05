@@ -40,14 +40,15 @@ int main()
 			LetterCounts[(letter - 'a')]++;
         }
     }
-    
+	
 	/*  Find Letters  */
-	for(int i(0); i<range; i++) {
 	// Most
+	for(int i(0); i<range; i++) {
 		if(LetterCounts[i] > LetterResults[0][0]) {
 			LetterResults [0][0] = LetterCounts[i];
 			LetterResults[1][0] = i;
 		}
+	}
 	// Second Most
 		if(LetterCounts[i] > LetterResults[0][1] && LetterCounts[i] < LetterResults[0][0]) {
 			LetterResults [0][1] = LetterCounts[i];
