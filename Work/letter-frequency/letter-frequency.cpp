@@ -1,11 +1,12 @@
 //
 //  Program to determine the two most 
-//  and least frequently lowercase letters 
-//  in an input file
+//  and least frequently used lowercase 
+//  letters in an input file
 //
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 int main()
@@ -42,20 +43,17 @@ int main()
     
 	/*  Find Letters  */
 	for(int i(0); i<range; i++) {
-
 	// Most
 		if(LetterCounts[i] > LetterResults[0][0]) {
 			LetterResults [0][0] = LetterCounts[i];
 			LetterResults[1][0] = i;
 		}
-	
 	// Second Most
 		if(LetterCounts[i] > LetterResults[0][1] && LetterCounts[i] < LetterResults[0][0]) {
 			LetterResults [0][1] = LetterCounts[i];
 			LetterResults[1][1] = i;
 		}
 	}
-	
 	//  Least
 	LetterResults[0][3] = LetterResults[0][0];
 	for(int i(0); i<range; i++) {
@@ -64,7 +62,6 @@ int main()
 			LetterResults[1][3] = i;
 		}
 	}
-	
 	//  Second Least
 	LetterResults[0][2] = LetterResults[0][0];
 	for(int i(0); i<range; i++) {
@@ -75,11 +72,14 @@ int main()
 	}
 	
 	/*  Concluding Text  */
+	cout << setw(12) << right << "Character"\
+	<< "  |  " << left << "Frequency" << endl;
 	for(int i(0); i<4; i++) {
-        cout << char(LetterResults[1][i] + FIRST_LOWERCASE) << ": " << LetterResults[0][i] << ", ";
-		cout << endl;
+        cout << setw(12) << right << char(LetterResults[1][i] + FIRST_LOWERCASE)\
+		<< "  |  " << left << LetterResults[0][i]\
+		<< endl;
     }
-    cout << endl << endl << endl << endl;    
+    cout << endl << endl << endl;
     
 	/*  Close Write File  */
     inFile.close();
