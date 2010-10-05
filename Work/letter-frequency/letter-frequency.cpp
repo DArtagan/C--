@@ -12,9 +12,9 @@ int main()
 {
     /*  Declare/Identify Variables  */
 	//  Constants
-    const int FIRST_LOWERCASE('a'), LAST_LOWERCASE('z');
-    const int range(LAST_LOWERCASE - FIRST_LOWERCASE);
-	const int TableWidth(10);
+	const int FIRST_LOWERCASE('a');
+    const int LAST_LOWERCASE('z');
+    const int range(LAST_LOWERCASE - FIRST_LOWERCASE + 1);
 	
 	//  Variables
     int LetterCounts[range] = {}, LetterResults[2][4] = {};
@@ -42,7 +42,7 @@ int main()
     
 	/*  Find Letters  */
 	for(int i(0); i<range; i++) {
-	
+
 	// Most
 		if(LetterCounts[i] > LetterResults[0][0]) {
 			LetterResults [0][0] = LetterCounts[i];
