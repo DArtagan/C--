@@ -19,7 +19,6 @@ int main()
 	
 	//  Variables
     int LetterCounts[range] = {}, LetterResults[2][4] = {};
-    int counter(0);
 	char letter;
     
 	/*  Open file for reading, check for validity  */
@@ -48,16 +47,17 @@ int main()
 			LetterResults [0][0] = LetterCounts[i];
 			LetterResults[1][0] = i;
 		}
-	}
+    }
 	// Second Most
-		if(LetterCounts[i] > LetterResults[0][1] && LetterCounts[i] < LetterResults[0][0]) {
+	for(int i(0); i<range; i++) {
+    	if(LetterCounts[i] > LetterResults[0][1] && LetterCounts[i] % LetterResults[0][0] != 0) {
 			LetterResults [0][1] = LetterCounts[i];
 			LetterResults[1][1] = i;
 		}
 	}
 	//  Least
 	LetterResults[0][3] = LetterResults[0][0];
-	for(int i(0); i<range; i++) {
+	for(int i(0); i < range; i++) {
 		if(LetterCounts[i] < LetterResults[0][3]) {
 			LetterResults [0][3] = LetterCounts[i];
 			LetterResults[1][3] = i;
@@ -65,7 +65,7 @@ int main()
 	}
 	//  Second Least
 	LetterResults[0][2] = LetterResults[0][0];
-	for(int i(0); i<range; i++) {
+	for(int i(0); i < range; i++) {
 		if(LetterCounts[i] < LetterResults[0][2] && LetterCounts[i] > LetterResults[0][3]) {
 			LetterResults [0][2] = LetterCounts[i];
 			LetterResults[1][2] = i;
@@ -75,7 +75,7 @@ int main()
 	/*  Concluding Text  */
 	cout << setw(12) << right << "Character"\
 	<< "  |  " << left << "Frequency" << endl;
-	for(int i(0); i<4; i++) {
+	for(int i(0); i < 4; i++) {
         cout << setw(12) << right << char(LetterResults[1][i] + FIRST_LOWERCASE)\
 		<< "  |  " << left << LetterResults[0][i]\
 		<< endl;

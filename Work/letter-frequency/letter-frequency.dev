@@ -30,7 +30,7 @@ CompilerSet=0
 CompilerSettings=
 
 [Unit1]
-FileName=main.cpp
+FileName=letter-frequency.cpp
 CompileCpp=1
 Folder=
 Compile=1
