@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
     /*  Declare/Identify Variables  */
-    string name, first, middle, last;
+    string name = "", first = "", middle = "", last = "";
 	int spacecounter(0), lettercounter(0), cursor(0);
 
 	/*  Header and ask for name  */
@@ -21,12 +21,12 @@ int main()
 
 	/*  Analyze Name  */
 	for(int i=0; i < int(name.length()); i++) {
-		if(name[i] = ' ') {
+		if(name[i] == ' ' && lettercounter == 0) {
 			spacecounter++;
-		} else if (name[i] != ' ') {
+		} else if(name[i] != ' ') {
 			first += name[i];
 			lettercounter++;
-		} else if(name[i] = ' '&& lettercounter > 0) {
+		} else if(name[i] == ' '&& lettercounter > 0) {
 			cursor = lettercounter + spacecounter;
 			spacecounter = 0;
 			lettercounter = 0;
@@ -34,12 +34,14 @@ int main()
 		}
 	}
 	for(int i=cursor; i < int(name.length()); i++) {
-		if(name[i] = ' ') {
+		if(name[i] == ' ' && lettercounter == 0) {
 			spacecounter++;
-		} else if (name[i] != ' ' && name[i] != '.') {
+		} else if(name[i] != ' ' && name[i] != '.') {
 			middle += name[i];
 			lettercounter++;
-		} else if((name[i] = ' ') && lettercounter > 0) {
+		} else if(name[i] == '.') {
+			lettercounter++;
+		} else if((name[i] == ' ') && lettercounter > 0) {
 			cursor += lettercounter + spacecounter;
 			spacecounter = 0;
 			lettercounter = 0;
@@ -52,11 +54,13 @@ int main()
 			lettercounter++;
 		}
 	}
+	if(middle == last) {
+		last = "";
+	}
 	
 	/*  Concluding Text  */
     cout << endl << endl;
-    cout << name;
-	cout << first << " " << middle << " " << last;
+	cout << last << ", " << first << " " << middle[0] << ".";
     cout << endl << endl << endl << endl;    
 
 	system("PAUSE");
