@@ -63,9 +63,9 @@ int main()
 	/*  Which side is valid?  */
 	if(left < counter && right > -1) {
 		if(left == right) { // When the left equals the right, the word is found.
-			cout << "The word, " << haystack[left] << ", is at point " << left << " in the data set." << endl;
+			cout << "The word, " << haystack[left] << ", is at index " << left << " in the data set." << endl;
 		} else { // If the left and right sides have crossed, the word is between those two
-			cout << "The word is between " << haystack[right] << " and " << haystack[left] << " in the data set." << endl;
+			cout << "The word is between " << haystack[right] << " (" << right << ") and " << haystack[left] << " (" << right << ") in the data set." << endl;
 		}
 	} else {
 		if(!(left < counter)) { // If the left bound has gone beyond the data set's upper bound, the word is too large
