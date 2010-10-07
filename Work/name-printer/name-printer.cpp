@@ -1,5 +1,5 @@
 //
-//  Program to
+//  Program to rearrange someone's full name
 //
 #include <cstdlib>
 #include <iostream>
@@ -20,6 +20,7 @@ int main()
     cout << endl;
 
 	/*  Analyze Name  */
+	//  First Name
 	for(int i=0; i < int(name.length()); i++) {
 		if(name[i] == ' ' && lettercounter == 0) {
 			spacecounter++;
@@ -33,6 +34,7 @@ int main()
 			break;
 		}
 	}
+	//  Middle Name
 	for(int i=cursor; i < int(name.length()); i++) {
 		if(name[i] == ' ' && lettercounter == 0) {
 			spacecounter++;
@@ -48,6 +50,7 @@ int main()
 			break;
 		}
 	}
+	//  Last Name
 	for(int i=cursor; i < int(name.length()); i++) {
 		if(name[i] == ' ' && lettercounter == 0) {
 			spacecounter++;
@@ -63,16 +66,16 @@ int main()
 			break;
 		}
 	}
+	//  Numeral
 	for(int i=cursor; i < int(name.length()); i++) {
 		if(name[i] != ' ' && (name[i] == 'I' || name[i] == 'V' || name[i] == 'X' || name[i] == 'C' || name[i] == 'L')) {
 			numeral += name[i];
 			lettercounter++;
 		}
 	}
-	if(last == numeral) {
-		numeral = "";
-	}
-	if(last == middle) {
+	//  Check that middle != last
+	if(last == "") {
+		last = middle;
 		middle = "";
 	}
 	
@@ -80,10 +83,14 @@ int main()
 	/*  Concluding Text  */
     cout << endl << endl;
 	cout << last << ", " << first << " ";
+	// Print only if middle exists
 	if(middle != "") {
 		cout << middle[0] << ". ";
 	}
-	cout << numeral;
+	// Print only if numeral truly exists
+	if(numeral != last) {
+		cout << numeral;
+	}
     cout << endl << endl << endl << endl;    
 
 	system("PAUSE");
