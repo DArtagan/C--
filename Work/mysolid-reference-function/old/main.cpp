@@ -21,8 +21,8 @@ int main()
     cout << endl << endl;
 
 	/*  Concluding Text, Print the Volume  */
-    cout << "Your pyramid of square side length " << s << " and height " << h\
-		 << "; has a surface area of " << SurfaceArea(s, h, V) << " and volume of " << V;
+    cout << "Your pyramid of square side length " << side << " and height " << height\
+		 << "; has a volume of << Volume << and 
     cout << endl << endl << endl << endl;    
 	
     system("PAUSE");

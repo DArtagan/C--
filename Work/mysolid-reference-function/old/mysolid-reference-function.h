@@ -2,7 +2,6 @@
 //  Header file for my square pyramid program
 //  that calculates surface area and volume
 //
-#pragma once
 #include <cstdlib>
 #include <iostream>
 #include <cmath>

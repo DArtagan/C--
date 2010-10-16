@@ -7,11 +7,11 @@
 double SurfaceArea(double side, double height, double& Volume)
 {	
 	/*  Calculations  */
-	Volume = pow(side, 2) * height / 3;
+	Volume = pow(side, 2) * height / 3
 	//  The equation of the volume of a square pyramid is:
 	//  V = l^2 * h / 3
 	
-	return (pow(side, 2) + side * sqrt((pow(side, 2) + pow((2 * height), 2))));
+	return (pow(side, 2) + side * sqrt((pow(side, 2) + pow((2 * height), 2))))
 	//  The equation of the surface area of a square pyramid is: 
 	//  S = l^2 + l * sqrt(l^2+(2h)^2)
 }
