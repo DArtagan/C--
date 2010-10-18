@@ -1,0 +1,30 @@
+# Project: mysolid-void-function
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = mysolid-void-function.o $(RES)
+LINKOBJ  = mysolid-void-function.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" C:/Dev-Cpp/lib/crt2.o -nostartfiles  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = mysolid-void-function.exe
+CXXFLAGS = $(CXXINCS)   -g -Wall -pedantic -ansi
+CFLAGS = $(INCS)   -g -Wall -pedantic -ansi
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before mysolid-void-function.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "mysolid-void-function.exe" $(LIBS)
+
+mysolid-void-function.o: mysolid-void-function.cpp
+	$(CPP) -c mysolid-void-function.cpp -o mysolid-void-function.o $(CXXFLAGS)
