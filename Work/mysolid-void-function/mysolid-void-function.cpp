@@ -7,14 +7,14 @@
 #include <cmath>
 using namespace std;
 
-double Reference (double side, double height, double& Volume);
+void Reference (double side, double height, double& Volume, double& SurfaceArea);
 
-void interface ( void )
-{
+int main() {
     /*  Declare variables */
     double side;
     double height;
 	double Volume;
+	double SurfaceArea;
 
 	/*  Header and User Inputs  */
 	cout << "-- Volume of a Square Pyramid --" << endl << endl;
@@ -24,25 +24,27 @@ void interface ( void )
 	cout << "The height of the pyramid: " << flush;
 	cin >> height;
     cout << endl << endl;
+    
+    /*  Calculations  */
+    Reference(side, height, Volume, SurfaceArea);
 	
 	/*  Concluding Text, Print the Volume  */
     cout << "Your pyramid of square side length " << side << " and height " << height\
-		 << "; has a surface area of " << Reference(side, height, Volume) << " and volume of " << Volume;
+		 << "; has a surface area of " << SurfaceArea << " and volume of " << Volume;
     cout << endl << endl << endl << endl;    
 	
     system("PAUSE");
-    //  Exit program.
-    return ;
+    //  Exit program
 }
 
-double Reference(double side, double height, double& Volume)
+void Reference(double side, double height, double& Volume, double& SurfaceArea)
 {	
 	/*  Calculations  */
-	Volume = pow(side, 2) * height / 3;
+	Volume = (pow(side, 2) * height / 3);
 	//  The equation of the volume of a square pyramid is:
 	//  V = l^2 * h / 3
 	
-	return (pow(side, 2) + side * sqrt((pow(side, 2) + pow((2 * height), 2))));
+	SurfaceArea = (pow(side, 2) + side * sqrt((pow(side, 2) + pow((2 * height), 2))));
 	//  The equation of the surface area of a square pyramid is: 
 	//  S = l^2 + l * sqrt(l^2+(2h)^2)
 }
