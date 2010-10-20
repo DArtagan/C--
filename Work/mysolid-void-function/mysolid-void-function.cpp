@@ -9,12 +9,23 @@ using namespace std;
 
 void Reference (double side, double height, double& Volume, double& SurfaceArea);
 
+/*
+    In function `int main()';
+    Line 30: void value not ignored as it ought to be
+    [Build Error] [mysolid-void-function.o] Error 1
+    
+    Nothing, it was a void function.
+    Inside the main function, a void value was called upon when it shouldn't have been, the program couldn't build
+    I attempted to store a void value
+*/
+
 int main() {
     /*  Declare variables */
     double side;
     double height;
 	double Volume;
 	double SurfaceArea;
+	double x;
 
 	/*  Header and User Inputs  */
 	cout << "-- Volume of a Square Pyramid --" << endl << endl;
