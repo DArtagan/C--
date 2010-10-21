@@ -11,7 +11,7 @@ int main()
     /*  Declare/Identify Variables  */
     
 	/*  Open file for reading, check for validity  */
-    ifstream inFile( "" );
+    ifstream inFile( "UNSORTED.DAT" );
     if( !inFile ) {
         cout << "Error opening file." << endl;
         system("PAUSE");
