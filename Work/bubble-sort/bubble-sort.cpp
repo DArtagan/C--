@@ -7,8 +7,10 @@
 #include <string>
 using namespace std;
 
+/*  Prototypes  */
 void bubblesort( int array[], int count );
 
+/*  Main function, handles input and output  */
 int main() {
     /*  Variables */
     const int SIZE(50000);
@@ -59,6 +61,7 @@ int main() {
     //  Exit program
 }
 
+/*  bubblesort function, sorts data in numrical order  */
 void bubblesort( int data[], const int counter ){
     /*  Variables  */
     int trans;
