@@ -14,6 +14,7 @@ int main()
 	
 	//  Variables
 	string text;
+	int LetterCounts [range] = {};
 	int most;
 	int nextMost;
 	int least;
@@ -42,23 +43,21 @@ int main()
 	
 	/*  Find Letters  */
 	// Most
-    findMost(LetterCounts, range, Most);
+    most = findMost(LetterCounts, range);
 	// Second Most
-    findNextMost(LetterCounts, range, nextMost);
+    nextMost = findNextMost(LetterCounts, range);
 	//  Least
-    findLeast(LetterCounts, range, least);
+    least = findLeast(LetterCounts, range);
 	//  Second Least
-    findNextLeast(LetterCounts, range, nextLeast);
+    nextLeast = findNextLeast(LetterCounts, range); 
 	
 	/*  Concluding Text  */
 	cout << setw(12) << right << "Character"\
 	<< "  |  " << left << "Frequency" << endl;
-	for(int i(0); i < 4; i++) {
-        cout << setw(12) << right << char(most + FIRST_LOWERCASE) << "  |  " << left << LetterResults[most] << endl;
-        cout << setw(12) << right << char(nextMost + FIRST_LOWERCASE) << "  |  " << left << LetterResults[nextMost] << endl;
-        cout << setw(12) << right << char(nextLeast + FIRST_LOWERCASE) << "  |  " << left << LetterResults[nextLeast] << endl;
-        cout << setw(12) << right << char(least + FIRST_LOWERCASE) << "  |  " << left << LetterResults[least] << endl;
-    }
+    cout << setw(12) << right << char(most + firstLetter) << "  |  " << left << LetterCounts[most] << endl;
+    cout << setw(12) << right << char(nextMost + firstLetter) << "  |  " << left << LetterCounts[nextMost] << endl;
+    cout << setw(12) << right << char(nextLeast + firstLetter) << "  |  " << left << LetterCounts[nextLeast] << endl;
+    cout << setw(12) << right << char(least + firstLetter) << "  |  " << left << LetterCounts[least] << endl;
     cout << endl << endl << endl;
     
 	/*  Close Write File  */

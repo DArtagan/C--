@@ -4,7 +4,7 @@
 //
 #include "letter-frequency-by-function.h"
 
-int findLeast(const int LetterCounts[], const int range)
+void findLeast(const array LetterCounts, const int range, int& least)
 {
 	/*  Variables  */
 	int least(LetterCounts[0]);

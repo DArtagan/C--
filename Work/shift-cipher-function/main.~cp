@@ -3,20 +3,11 @@
 //
 #include "shift-cipher-function.h"
 
-//
-//  Program to shift the alphanumeric characters in a file and output them to another file, in the style of a shift-cypher
-//
-#include <cstdlib>
-#include <iostream>
-#include <fstream>
-using namespace std;
-
 int main()
 {
     /*  Declare/Identify Variables  */
     int shift;
-    char inChar;
-    char outChar;
+    string text;
     
     /*  Ask for final value  */
     cout << "-- Shift Cipher --" << endl << endl;
@@ -38,31 +29,14 @@ int main()
         exit(1);
     }
     
-    /*  Shift the characters  */
-    while( inFile >> inChar ) {
-        if( inChar >= '0' && inChar <= '9' ) {
-            outChar = inChar - '0';
-            outChar += 10 + shift;
-            outChar %= 10;
-            outChar += '0';
-        } else if( inChar >= 'a' && inChar <= 'z' ) {
-            outChar = inChar - 'a';
-            outChar += 26 + shift;
-            outChar %= 26;
-            outChar += 'a';
-        } else if ( inChar >= 'A' && inChar <= 'Z' ) {
-            outChar = inChar - 'A';
-            outChar += 26 + shift;
-            outChar %= 26;
-            outChar += 'A';
-        } else {
-            outChar = inChar;
-        }
-        outFile << outChar;
+    /*  Store file into string  */
+    if( !getline( inFile, text, char(0) )) {
+        // Failure!
+        exit(1);
     }
 
-// adsf
-// asdf
+    /*  Write out put to file  */
+    outFile << text;
 
     /*  Close Files  */
     inFile.close();

@@ -36,6 +36,7 @@ int main()
         // Failure!
         exit(1);
     }
+	
     /*  Count the letters in the file  */
     countLetters(text, firstLetter, lastLetter, LetterCounts);
 	

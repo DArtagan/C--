@@ -1,11 +1,12 @@
 //
-//
+//  Shifts the entire text from beginning to end
 //
 #include "shift-cipher-function.h"
 
-void shiftCipher(string& text, int shift) {
+void shiftCipher(string& text, const int shift) {
     for(int i(0); i < text.length(); i++) {
-        text[i] = shiftBlock(char(text[i]), shift);
+// Calls the individual character shift function
+        text[i] = shiftBlock(text[i], shift);
     }
     return;
 }

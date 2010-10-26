@@ -1,5 +1,5 @@
 //
-//
+//  A program to shift a message a given amount, encoding or decoding it
 //
 #include "shift-cipher-function.h"
 
@@ -35,7 +35,10 @@ int main()
         exit(1);
     }
 
-    /*  Write out put to file  */
+    /*  Function to shift the text  */
+    shiftCipher(text, shift);
+
+    /*  Write output to file  */
     outFile << text;
 
     /*  Close Files  */

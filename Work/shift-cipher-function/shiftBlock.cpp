@@ -1,25 +1,30 @@
 //
-//
+//  The actual shift function for each character
 //
 #include "shift-cipher-function.h"
 
-char shiftBlock(char text&, int shift) {
-    if( inChar >= '0' && inChar <= '9' ) {
-        outChar = inChar - '0';
-        outChar += 10 + shift;
-        outChar %= 10;
-        outChar += '0';
-    } else if( inChar >= 'a' && inChar <= 'z' ) {
-        outChar = inChar - 'a';
-        outChar += 26 + shift;
-        outChar %= 26;
-        outChar += 'a';
-    } else if ( inChar >= 'A' && inChar <= 'Z' ) {
-        outChar = inChar - 'A';
-        outChar += 26 + shift;
-        outChar %= 26;
-        outChar += 'A';
+char shiftBlock(char& text, int shift) {
+// Numbers
+    if( text >= '0' && text <= '9' ) {
+        text = text - '0';
+        text += 10 + shift;
+        text %= 10;
+        text += '0';
+// Lowercase Letters
+    } else if( text >= 'a' && text <= 'z' ) {
+        text = text - 'a';
+        text += 26 + shift;
+        text %= 26;
+        text += 'a';
+// Capital Letters
+    } else if ( text >= 'A' && text <= 'Z' ) {
+        text = text - 'A';
+        text += 26 + shift;
+        text %= 26;
+        text += 'A';
+// All other characters are kept unshifted
     } else {
-        outChar = inChar;
+        text = text;
     }
+    return text;
 }

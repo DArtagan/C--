@@ -4,7 +4,7 @@
 //
 #include "letter-frequency-by-function.h"
 
-int findNextMost(const int LetterCounts[], const int range)
+void findNextMost(const array LetterCounts, const int range, int& nextMost)
 {
 	/*  Variables  */
 	int most(0);

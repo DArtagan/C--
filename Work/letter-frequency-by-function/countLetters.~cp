@@ -6,10 +6,9 @@
 
 void countLetters(const string& text, const char firstLetter, const char lastLetter, int LetterCounts[])
 {
-    for(int i(0); i < text.length(); i++) {
+    for(int i(0); i<text.length(); i++) {
         if(text[i] >= firstLetter && text[i] <= lastLetter) {
-			LetterCounts[(text[i] - firstLetter)]++;
+			LetterCounts[(letter - firstLetter)]++;
         }
     }
-    return;
 }
