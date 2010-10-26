@@ -1,6 +1,5 @@
 //
-//  The main routine for a program for finding 
-//  the surface area and volume of a square pyramid
+//  Program to find the second smallest number in an array
 //
 #include "letter-frequency-by-function.h"
 
@@ -8,29 +7,29 @@ int findNextLeast(const int LetterCounts[], const int range)
 {
 	/*  Variables  */
     int most;
-	int least(LetterCounts[0]);
+	int least(0);
 	int nextLeast;
 	
-	/*  Find the most letters  */
+	/*  Find the largest  */
 	for(int i(0); i<range; i++) {
-		if(LetterCounts[i] > most) {
+		if(LetterCounts[i] > LetterCounts[most]) {
             most = i;
         }
 	}
 	
-	/*  Find the least letters  */
+	/*  Find the smallest  */
 	for(int j(0); j < 2; j++) {
 	   for(int i(0); i < range; i++) {
-	   	   if(LetterCounts[i] < least) {
+	   	   if(LetterCounts[i] < LetterCounts[least]) {
                 least = i;
             }
         }
 	}
 	
-	/*  Find the next least letters  */
+	/*  Find the second smallest  */
 	nextLeast = most;
 	for(int i(0); i < range; i++) {
-		if(LetterCounts[i] < nextLeast && LetterCounts[i] > least) {
+		if(LetterCounts[i] < LetterCounts[nextLeast] && LetterCounts[i] > LetterCounts[least]) {
 			nextLeast = i;
 		}
 	}

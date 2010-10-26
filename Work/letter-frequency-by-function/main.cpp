@@ -1,6 +1,5 @@
 //
-//  The main routine for a program for finding 
-//  the surface area and volume of a square pyramid
+//  The main function for the letter-frequency finding program, handles I/O
 //
 #include "letter-frequency-by-function.h"
 
