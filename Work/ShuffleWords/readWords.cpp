@@ -1,8 +1,12 @@
+//
+//  Function that reads user input for words
+//
 #include "ShuffleWords.h"
 
 int readWords(string words[], const int SIZE) {
     /*  Variables  */
     int counter(0);
+    string temporary;
     
     /*  Friendly Text  */
     cout << "Enter the words you would like shuffled," << \
@@ -12,9 +16,10 @@ int readWords(string words[], const int SIZE) {
 
     /*  Prompt for and store words  */
     for(int i(0); i < SIZE; i++) {
-        cin >> words[i];
+        cin >> temporary;
+        if(i != 0 && temporary == words[(i - 1)]) break;
+        words[i] = temporary;
         counter++;
-        if(i != 0 && words[i] == words[(i - 1)]) break;
     }
     cout << endl << endl;
     
