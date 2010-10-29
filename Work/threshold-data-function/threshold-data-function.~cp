@@ -22,28 +22,16 @@ int main()
         system("PAUSE");
         exit(1);
     }	
-	ofstream outFile( "PROCESSED_DATA" );
-    if( !outFile ) {
-        cout << "Error opening file." << endl;
-        system("PAUSE");
-        exit(1);
-    }	
 	
-	
-	/*  All the work  */
-    // while we can read size datapoints into array from the file
-    while( readData( inFile, data, size, MAX ) ) {
-        threshold( data, size, upper, lower );
-        outputData( outFile, data, size );
-    }
+	/*  Store data  */
     
     /*  Replace data with threshold indicator constants  */
     threshold(data, size, upper, lower);
         
     /*  Concluding Remarks  */
-    for(int i(0); i < size; i++) {
+    /*for(int i(0); i < size; i++) {
         cout << data[i];
-    }
+    }*/
     cout << endl << endl << endl;
 
 	/*  Close Write File  */

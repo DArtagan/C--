@@ -3,17 +3,24 @@
 //
 #include "threshold-data-function.h"
 
-istream& readData( istream& inputf, int data[], int& size )
+istream& readData( istream& inputf, int data[], int& size, int MAX )
 {
     /*  Variables and Constants  */
-    int counter(-1);
-    int trans;
     
-    while(inputf >> trans) {
-        if(inputf ==  ) counter++;
+    inputf >> size;
+    
+    if( size > MAX ) {
+        cout << "There are too many data points for this program." << endl;
+        system("PAUSE");
+        exit(1);
     }
-    
-    cout << counter;
+        
+    for(int i(0); i < size; i++) {
+        if( !(inputf >> data[i])) {
+            break;
+        }
+    }
+
     
     return inputf;
 }
