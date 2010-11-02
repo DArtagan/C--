@@ -1,5 +1,7 @@
 //
-//
+//  Function to find the threshold values,
+//  compare the data to those, and replace 
+//  the data points with their threshold classification
 //
 #include "threshold-data-function.h"
 

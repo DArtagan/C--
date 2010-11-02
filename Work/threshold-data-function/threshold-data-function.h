@@ -1,5 +1,6 @@
 //
-//
+//  Header file for a program that finds the threshold values for data
+//  and outputs those data values to a file classified by their threshold point
 //
 #include <cstdlib>
 #include <iostream>

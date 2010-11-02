@@ -1,5 +1,5 @@
 //
-//
+//  Function that reads data from a file to an array
 //
 #include "threshold-data-function.h"
 

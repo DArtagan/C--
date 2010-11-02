@@ -1,5 +1,6 @@
 //
-//
+//  Function to output characters to a file depending
+//  on one of three input values in an array
 //
 #include "threshold-data-function.h"
 

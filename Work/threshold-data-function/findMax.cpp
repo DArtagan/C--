@@ -1,5 +1,5 @@
 //
-//  A function to find the maximum value in a data set
+//  A function to find the maximum value in a data array
 //
 #include "threshold-data-function.h"
 

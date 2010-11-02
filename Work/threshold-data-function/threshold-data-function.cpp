@@ -1,5 +1,6 @@
 //
-//  
+//  The main function for the threshold-finding program
+//  This function handles the UI
 //
 #include "threshold-data-function.h"
 
