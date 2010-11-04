@@ -1,0 +1,6 @@
+//
+//
+//
+#include "SolidClass.h"
+
+SolidClass::
