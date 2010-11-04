@@ -1,7 +1,7 @@
 [Project]
-FileName=..\mysolid-reference-function\mysolid-reference-function.dev
+FileName=solid-class.dev
 Name=mysolid-reference-function
-UnitCount=5
+UnitCount=3
 Type=1
 Ver=1
 ObjFiles=
@@ -47,16 +47,6 @@ ProductName=
 ProductVersion=
 AutoIncBuildNr=0
 
-[Unit2]
-FileName=mysolid-reference-function.h
-CompileCpp=1
-Folder=mysolid-reference-function
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit4]
 FileName=SolidClass.h
 CompileCpp=1
@@ -78,9 +68,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=SurfaceArea.cpp
+FileName=SolidClass.cpp
 CompileCpp=1
-Folder=mysolid-reference-function
+Folder=
 Compile=1
 Link=1
 Priority=1000
@@ -89,6 +79,16 @@ BuildCmd=
 
 [Unit5]
 FileName=SolidClass.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit2]
+FileName=SolidClass.h
 CompileCpp=1
 Folder=
 Compile=1
