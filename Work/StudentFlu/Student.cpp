@@ -63,6 +63,17 @@ bool Student::catchFlu( )
 
 ostream& Student::output( ostream& os ) const
 {
-    os << status_hours << status;
+    os << status_hours << status << endl;
     return os;
+}
+//  status accessor function
+char Student::getStatus( ) const 
+{
+    return status;
+}
+
+// status_houts accessor function
+int Student::getStatus_Hours(  ) const 
+{
+    return status_hours;
 }

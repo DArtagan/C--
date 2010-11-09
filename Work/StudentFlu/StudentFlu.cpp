@@ -22,10 +22,22 @@ int main()
     int sickHours(0);
     int iterations(160);
     
+    
     /*    */
     for( int i(0); i < iterations; i++) {
-        fluStudent.output( ostream& os );
+        if( fluStudent.getStatus() == 'S' || fluStudent.getStatus() == 'H' ) sickHours++;
+        if( wellStudent.getStatus() == 'S' || wellStudent.getStatus() == 'H' ) sickHours++;
+        if( fluStudent.nextHour() == true ) fluStudent.output( cout );
+        if( wellStudent.nextHour() == true ) wellStudent.output( cout );
+        if( fluStudent.getStatus() == 'I' && wellStudent.getStatus() == 'U' ) {
+            if( wellStudent.catchFlu() ) {
+                cout << "wellStudent changed to " << cout ;
+             wellStudent.output(cout);
+            }
+        }
     }
+    
+    cout << "Amount of sick time: " << sickHours << " hours" << endl;
     
     system("PAUSE");
     return 0;
