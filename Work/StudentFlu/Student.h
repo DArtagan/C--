@@ -3,10 +3,8 @@
 //
 #pragma once
 
-#include <cmath>
 #include <iostream>
 #include <cstdlib>
-#include <iomanip>
 
 using namespace std;
 
@@ -28,6 +26,4 @@ private:
 /*  Data Members  */
     char status;
     int status_hours;
-    //char statusSymbols [5] = {'U', 'I', 'S', 'H', 'C'};
-    
 };

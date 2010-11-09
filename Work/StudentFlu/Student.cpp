@@ -1,8 +1,8 @@
 //
 //  Implementation file for Student class
 //
-#include <cmath>
 #include <iostream>
+#include <cstdlib>
 
 #include "Student.h"
 
@@ -22,11 +22,11 @@ bool Student::nextHour( )
         return false;
     } else {
         --status_hours;
-        if( status_hours == 1 ) {
+        if( status_hours == 1 || ( status_hours == 0 && status == 'U')) {
             if( status == 'U' ) { // Uninfected to infected
                 status = 'I';
                 status_hours = 52;
-            } else if( status == 'I' ) {  // Infected to Symptoms
+            } else if( status == 'I' ) {  // Infected to Symptom
                 status = 'S';
                 status_hours = 24;
             } else if( status == 'S' ) { // Symptoms to Home
@@ -37,6 +37,8 @@ bool Student::nextHour( )
                 status_hours = 0;
             }
             return true;
+        } else { 
+            return false;
         }
     }
 }
@@ -49,7 +51,7 @@ bool Student::catchFlu( )
     const int INFECTIOUS_HOURS = 52;
     
     if( status = 'U' ) {
-        if( rand()%RESOLUTION/double(RESOLUTION) < 0.05 ) {
+        if( rand() % RESOLUTION / double(RESOLUTION) < 0.05 ) {
             status_hours = INFECTIOUS_HOURS; // Default infectious time
             status = 'I';
             return true;
@@ -64,7 +66,7 @@ bool Student::catchFlu( )
 //  ouptut function, outputs the status_hours and status using a method give
 ostream& Student::output( ostream& os ) const
 {
-    os << status_hours << status << endl;
+    os << status_hours << status;
     return os;
 }
 //  status accessor function
