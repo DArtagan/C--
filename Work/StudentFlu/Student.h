@@ -1,5 +1,5 @@
 //
-//  SolidClass Header File
+//  Student class header file
 //
 #pragma once
 
@@ -10,20 +10,24 @@
 
 using namespace std;
 
-class SolidClass {
+class Student {
 public:
-    /*  Class Type Declaration  */
-    Student( int height, int sideLength );
-    /*  Functions  */
+/*  Class Type Declaration  */
+    Student( int contagious_countdown );
+/*  Functions  */
+    //  Advances status_hours and status
     bool nextHour( );
+    //  Handles the possibility of a 'U' becoming an 'I'
     bool catchFlu( );
     ostream& output( ostream& outputf ) const;
+    //  accessor function for status
+    char getStatus( ) const;
+    //  accessor function for status
+    int getStatus_Hours(  ) const;
 private:
-    /*  Data Members  */
-    int contagious_countdown;
+/*  Data Members  */
     char status;
     int status_hours;
     //char statusSymbols [5] = {'U', 'I', 'S', 'H', 'C'};
-    int RESOLUTION(10000);
-    int INFECTIOUS_HOURS(6 * 24);
+    
 };

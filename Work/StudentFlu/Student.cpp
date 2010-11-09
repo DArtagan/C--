@@ -1,48 +1,53 @@
 //
-//  Implementation file for SolidClass
+//  Implementation file for Student class
 //
 #include <cmath>
 #include <iostream>
 
-#include "SolidClass.h"
+#include "Student.h"
 
 using namespace std;
 
-//  ctor implementation
-Student::Student(  )
+//  Student ctor implementation
+Student::Student( int contagious_countdown )
 {
-    status_hours = contagious_countdown;
     status = 'U';
+    status_hours = contagious_countdown;
 }
 
-//  Functions
-bool nextHour( )
+//  nextHour function, advances status hours and status
+bool Student::nextHour( )
 {
-    if( status == 'c' ) {
+    if( status == 'C' ) {
         return false;
     } else {
         --status_hours;
-    }
-    if( status_hours == 1 ) {
-        if( status == 'U' ) {
-            status = 'I';
-            status_hours = ;
-        } else if( status == 'I' ) {
-            status = 'S';
-            status_hours = ;
-        } else if( status == 'H' ) {
-            status = 'H';
-            status_hours = ;
-        } else {
-            status = 'C'
-            status_hours = 0;
+        if( status_hours == 1 ) {
+            if( status == 'U' ) {
+                status = 'I';
+                status_hours = 52;
+            } else if( status == 'I' ) {
+                status = 'S';
+                status_hours = 24;
+            } else if( status == 'S' ) {
+                status = 'H';
+                status_hours = 48;
+            } else {
+                status = 'C';
+                status_hours = 0;
+            }
         }
         return true;
     }
 }
 
-bool catchFlu( )
+//  catchFlu function, handles the chances a 'U' gets the flu
+bool Student::catchFlu( )
 {
+    /*  Variables  */
+    const int RESOLUTION = 10000;
+    const int INFECTIOUS_HOURS = 52;
+    
     if( status = 'U' ) {
         if( rand()%RESOLUTION/double(RESOLUTION) < 0.05 ) {
             status_hours = INFECTIOUS_HOURS;
@@ -56,9 +61,8 @@ bool catchFlu( )
     }
 }
 
-ostream& output( ostream& outputf ) const
+ostream& Student::output( ostream& os ) const
 {
-    cout << 
-    
-    return outputf;
+    os << status_hours << status;
+    return os;
 }
