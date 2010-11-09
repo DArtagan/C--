@@ -18,26 +18,26 @@ Student::Student( int contagious_countdown )
 //  nextHour function, advances status hours and status
 bool Student::nextHour( )
 {
-    if( status == 'C' ) {
+    if( status == 'C' ) {  // If cured, no change
         return false;
     } else {
         --status_hours;
         if( status_hours == 1 ) {
-            if( status == 'U' ) {
+            if( status == 'U' ) { // Uninfected to infected
                 status = 'I';
                 status_hours = 52;
-            } else if( status == 'I' ) {
+            } else if( status == 'I' ) {  // Infected to Symptoms
                 status = 'S';
                 status_hours = 24;
-            } else if( status == 'S' ) {
+            } else if( status == 'S' ) { // Symptoms to Home
                 status = 'H';
                 status_hours = 48;
-            } else {
+            } else { // Home to Cured
                 status = 'C';
                 status_hours = 0;
             }
+            return true;
         }
-        return true;
     }
 }
 
@@ -50,7 +50,7 @@ bool Student::catchFlu( )
     
     if( status = 'U' ) {
         if( rand()%RESOLUTION/double(RESOLUTION) < 0.05 ) {
-            status_hours = INFECTIOUS_HOURS;
+            status_hours = INFECTIOUS_HOURS; // Default infectious time
             status = 'I';
             return true;
         } else {
@@ -61,6 +61,7 @@ bool Student::catchFlu( )
     }
 }
 
+//  ouptut function, outputs the status_hours and status using a method give
 ostream& Student::output( ostream& os ) const
 {
     os << status_hours << status << endl;
@@ -72,7 +73,7 @@ char Student::getStatus( ) const
     return status;
 }
 
-// status_houts accessor function
+// status_hours accessor function
 int Student::getStatus_Hours(  ) const 
 {
     return status_hours;

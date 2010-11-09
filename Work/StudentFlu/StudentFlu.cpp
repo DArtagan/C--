@@ -1,9 +1,8 @@
 //
-//  The main routine for flu simulation program
+//  The main routine for a flu stage simulation program
 //
 #include <iostream>
 #include <cstdlib>
-
 
 #include "Student.h"
 
@@ -13,7 +12,13 @@ int readSeed();
 
 int main()
 {
+    /*  Header  */
+    cout << " -- Simulator for the flu stages of two students --";
+    cout << endl << endl;
+    
+    /*  rand() seed  */
     srand( readSeed() );
+    cout << endl << endl << endl;
 
     /*  Variables  */
     int countdown( 1 + rand() % 20 );
@@ -23,21 +28,30 @@ int main()
     int iterations(160);
     
     
-    /*    */
+    /*  Simulation Loop  */
     for( int i(0); i < iterations; i++) {
+        // fluStudent
         if( fluStudent.getStatus() == 'S' || fluStudent.getStatus() == 'H' ) sickHours++;
+        if( fluStudent.nextHour() == true ) {
+            cout << "fluStudent change: ";
+            fluStudent.output( cout );
+        }
+        // wellStudent
         if( wellStudent.getStatus() == 'S' || wellStudent.getStatus() == 'H' ) sickHours++;
-        if( fluStudent.nextHour() == true ) fluStudent.output( cout );
-        if( wellStudent.nextHour() == true ) wellStudent.output( cout );
+        if( wellStudent.nextHour() == true ) {
+            cout << "wellStudent change: ";
+            wellStudent.output( cout );
+        }
+        // Handles the chances the well student becomes sick
         if( fluStudent.getStatus() == 'I' && wellStudent.getStatus() == 'U' ) {
             if( wellStudent.catchFlu() ) {
-                cout << "wellStudent changed to " << cout ;
-             wellStudent.output(cout);
+                cout << "wellStudent change: ";
+             wellStudent.output( cout );
             }
         }
     }
     
-    cout << "Amount of sick time: " << sickHours << " hours" << endl;
+    cout << endl << endl << "Amount of sick time: " << sickHours << " hours" << endl << endl << endl << endl;
     
     system("PAUSE");
     return 0;
