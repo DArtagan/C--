@@ -1,0 +1,33 @@
+# Project: MonthTest
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = Month.o MonthTest.o $(RES)
+LINKOBJ  = Month.o MonthTest.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" C:/Dev-Cpp/lib/crt2.o -nostartfiles  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/MinGW/bin"  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = MonthTest.exe
+CXXFLAGS = $(CXXINCS)   -g -Wall -pedantic -ansi
+CFLAGS = $(INCS)   -g -Wall -pedantic -ansi
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before MonthTest.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "MonthTest.exe" $(LIBS)
+
+Month.o: Month.cpp
+	$(CPP) -c Month.cpp -o Month.o $(CXXFLAGS)
+
+MonthTest.o: MonthTest.cpp
+	$(CPP) -c MonthTest.cpp -o MonthTest.o $(CXXFLAGS)
