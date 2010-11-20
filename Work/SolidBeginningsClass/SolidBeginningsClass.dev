@@ -1,7 +1,7 @@
 [Project]
-FileName=WeekSchedule.dev
-Name=WeekSchedule
-UnitCount=5
+FileName=SolidBeginningsClass.dev
+Name=SolidBeginningsClass
+UnitCount=3
 Type=1
 Ver=1
 ObjFiles=
@@ -30,7 +30,7 @@ CompilerSet=0
 CompilerSettings=
 
 [Unit1]
-FileName=WeekSchedule.cpp
+FileName=solid-friend-operator.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -58,7 +58,7 @@ ProductVersion=
 AutoIncBuildNr=0
 
 [Unit2]
-FileName=WeekSchedule.h
+FileName=Solid.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -68,27 +68,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=blocking.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit4]
-FileName=readSeed.cpp
-CompileCpp=1
-Folder=WeekSchedule
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit5]
-FileName=shuffler.cpp
+FileName=Solid.cpp
 CompileCpp=1
 Folder=
 Compile=1

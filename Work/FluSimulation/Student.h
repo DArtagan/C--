@@ -21,7 +21,6 @@ public:
     static const int CURED=3;
     static const int UNINFECTED=4;
     static const int STAGES=5;
-    
 //  Schedule Constants
     //  Time
     static const int DAYS=2;
@@ -41,26 +40,36 @@ public:
     static const int STUDENT_CENTER = 2;
     static const int REC_CENTER = 3;
     static const int COMMONS = 4;
+//  Probability Resolution
+    static const int theRAND_MAX = 100000;
     
 /*  Functions  */
     //  Advances status_hours and status
     bool nextHour( );
     //  Handles the possibility of a 'U' becoming an 'I'
-    bool catchFlu( );
-    ostream& output( ostream& outputf ) const;
-    //  accessor function for status
+    bool catchFlu( const int locationCounts[] );
+    ostream& output( ostream& os ) const;
+    //  accessor function to get the status
     int getStatus( ) const;
-    //  accessor function for status
+    //  accessor function to get the status_hours
     int getStatus_Hours(  ) const;
+    //  accessor function to set the status
     void setStatus( const int theStatus );
-    
-    void block_schedule( const int dayIndex );
-    void shuffle_schedule( const int dayIndex );
-    
+    //  Update the Location
     void updateLocation( const int dayIndex, const int hour );
+    //  accessor to return the location
+    int getLocation( ) const;
+    //  accessor to return whether their infectious
+    bool isInfectious() const;
+private:
 /*  Helper Functions  */
-    //  
+    //  Create a random schedule
+	void block_schedule( const int dayIndex );
+	//  Shuffle the schedule using FisherYates
+    void shuffle_schedule( const int dayIndex );
+    //  get the duration for the current status
     int getDuration() const;
+    
 /*  Data Members  */
     int status;
     int status_hours;
