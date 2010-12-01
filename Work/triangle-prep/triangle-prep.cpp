@@ -49,9 +49,9 @@ int main()
     /*  Close Write File  */
     outFile.close();
     
-    /*  Open file for writing, check for validity  */
+    /*  Open file for reading, check for validity  */
     ifstream inFile( "OUTPUT.dat" );
-    if( !outFile ) {
+    if( !inFile ) {
         cout << "Error opening file." << endl;
         system("PAUSE");
         exit(1);

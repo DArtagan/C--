@@ -1,0 +1,37 @@
+Final Project - Dec 9
+AllocatedTriangles (Nov 30), FluPolicy (Dec 7)
+FluVaccine - Nov 30
+TrianglePrep - Nov 22	
+SolidFriendOperator - Nov 16
+MonthClass - Nov 15
+FluSimulation - Nov 19
+PlayerClass - Nov 9
+StudentFlu - Nov 8
+SolidBeginningsClass - Nov 4
+WeekSchedule - Nov 3
+OverloadedInputValidation - Nov 1
+ThresholdDataFunction - Oct 28
+ShuffleWords - Oct 26
+LetterFrequencyByFunction, ShiftCipherByFunction - Oct 25
+BubbleSort - Oct 21
+QuadraticRoots (Due Oct 17), VoidReferenceSolidMetrics (Due Oct 20)
+ReferenceSolidMetrics - Oct 15
+SolidBeginningsFunction - Oct 12
+NamePrinter - Oct 5
+LetterFrequency (Due Oct 4), BinarySearchWords (Due Oct 6)
+PowerPlantMax - Sep 30
+ThresholdData - Sep 28
+SutureRejects, CodeAdvice - Sep 27
+ShiftCipher - Sep 23
+IntegerChars - Sep 21
+LoopRunTimes, TimberRegrowthYears - Sep 20
+FindPrimes - Sep 16
+FiveModSum - Sep 14
+InputValidation, PaperScissorsRock - Sep 13
+AsciiExploration - Sep 9
+Skip conditional operator and switch - Sep 6
+BooleanExpressions - Sep 7
+TKtoTF, AminoAcidAverageWeight - Sep 6
+VolumeOfSphere - Sep 2
+MilesToKilometers - Aug 31
+SolidBeginnings - Aug 30
