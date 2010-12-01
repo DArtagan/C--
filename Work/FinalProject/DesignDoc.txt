@@ -1,0 +1,138 @@
+Sudoku Solver
+=============
+
+Ivan Yaromenka
+William Weiskopf
+
+
+PROBLEM DESCRIPTION
+-------------------
+We propose making a program to both solve and generate sudoku puzzles.  At startup the user would have a choice between using the sudoku solver part of the program, or the generator part.  When using the solver, the user would input the values from their sudoku problem into the program.  The program would then display the solved sudoku.  For the sudoku generator, the user would be asked for a seed and a puzzle would be created on screen for them.  The user would have the ability to solve the puzzle on screen.  When the user has filled out the entire puzzle, the program will verify their answer.  If incorrect the user will be given a choice of playing again, or being given the answer.  
+
+
+DATA DESCRIPTION
+---------------------------------------------------------------------
+//
+//	ThreeByThree class header file
+//
+#pragma once
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+class ThreeByThree {
+public:
+/*  ctor declarations  */
+	ThreeByThree( );
+	ThreeByThree( int theArray[][BOUND] );
+/*  Constants  */
+	static const int LIMIT = 9;
+	static const int BOUND = 3;
+/*  Operators  */	
+	friend ostream& operator<<( ostream& os, ThreeByThree rhs );
+/*  Accessors  */
+	int getValue( int theRow, int theCol );
+/*  Functions  */
+	bool find( );  // Tests if a 3x3 has two or less unknowns (represented by 0)
+	bool test( );   // Tests the class for repeated numbers
+
+private:
+/*  Helper Functions  */
+	bool guess( );  // (Might not be a good idea to guess
+/*  Data Members  */
+	int name;  // Name of the 3x3
+	int SudokuBlock[BOUND][BOUND];  // Holds the actual values
+	bool solved;   // Tells whether the row/column is indisputably solved, so we don't need to re-test
+	int fork;  // Keeps track of the forks we make when guessing
+};
+---------------------------------------------------------------------
+//
+//	RowNColumn class header file
+//
+#pragma once
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+class RowNColumn {
+public:
+/*  ctor declarations  */
+	RowNColumn( );
+	RowNColumn( int theArray[LIMIT] );
+/*  Constants  */
+	static const int LIMIT = 9;
+	static const int BOUND = 3;
+/*  Operators  */	
+/*  Accessors  */
+	int getValue( int seriesIndex );
+	void setValue( int seriesIndex, int newValue );
+/*  Functions  */
+	bool find( );  // Tests if a row/column has two or less unknowns (represented by 0), when it finds that row/column it runs the guess helper function
+	bool test( );   // Tests the class for repeated number
+	
+	
+private:
+/*  Helper Functions  */
+	bool guess( );  // 
+/*  Data Members  */
+	int name;
+	int SudokuSeries[LIMIT];
+	bool solved;  // Tells whether the row/column is indisputably solved, so we don't need to re-test
+	int fork;  // Keeps track of the forks we make when guessing
+};
+---------------------------------------------------------------------
+
+
+PROCEDURAL DESCRIPTION
+---------------------------------------------------------------------
+//
+//	Sudoku Program
+//
+
+bool testSudoku();
+
+bool solver() {
+	// All things done through functions that come from a header file.
+	// Would call a function to populate the classes using user input
+	// Runs a series of loops to solve the puzzle
+	// Outputs a solved version of the puzzle
+}
+
+bool simulator() {
+	// All things done through functions that come from a header file.
+	// Ask for seed
+	// Would create a viable sudoku puzzle, saves the solution to file for reference by program or user later
+	// Allow the user to input values
+	// When the puzzle has been attempted, checks the solution
+	// On success, congratulates the user 
+	// On failure, offers to let them try again or see the solution
+}
+
+int main () {
+	// If-Else asking the user whether they want to use the simulator or the solver
+	// All things done through functions that come from a header file.
+	}
+---------------------------------------------------------------------
+	
+	
+REQUIREMENTS
+------------
+1. 3x3 class, RowNColumn class (possible third class for the overall Sudoku puzzle)
+2. Used in every class
+3. For the simulator the solution is stored to disk, along with the seed (in case the user wants to use it after they quit).  If the user asks to see the solution it will be read from file.
+4. A La Carte
+	a. 2x2 for static const(s)
+	b. 1x3 for non-const class data members
+	c. 1x2 for accessor functions
+	d. 2x1 for a helper function
+	e. 3x2 for member functions
+	f. 3x2 for reading and writing to disk during the simulator
+	g. 5x1 one additional class (at least)
+	perhaps additional a al carte requirements will be fullfilled beyond what we can foresee at the present
+
+	
+SPECIAL NEEDS/CONCERNS
+----------------------
+None at this time.
