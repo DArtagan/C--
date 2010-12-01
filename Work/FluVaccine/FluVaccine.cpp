@@ -16,12 +16,19 @@ int main() {
     int N(200);
     double average_infected(0);
     
+    /*  Header  */
+    cout << endl << endl << " -- Flu on Campus Simulator --" << endl;
+    
+    /*  Simulator  */
     readSeed();  // Sets the seed for rand()
     for( int i(0); i < N; i++) {
+        cout << "Running simulation " << i << "...\n";
         average_infected += simulator();
     }
+    
+    /*  Results  */
     average_infected = average_infected / N;
-    cout << endl << endl << average_infected << endl << endl << endl;
+    cout << endl << endl << "There was an average infection rate of the campus of " << average_infected << "%" << endl << endl << endl;
     system("PAUSE");
     return 0;
 }
@@ -46,10 +53,9 @@ double simulator()
         students[i].setStatus( Student::VACCINATED );
     }
     
-    //cout << endl;  // Header
-    
 	for( int d(0); d < WEEKS_IN_SEMESTER * DAYS_IN_WEEK; d++ ) {  // Loop for each day in a semester
 		for( int h(0); h < HOURS_IN_DAYS; h++ ) {  // Loop for each hour in a day
+    		//cout << h << endl;
 			if( h>=Student::HOURS || d%DAYS_IN_WEEK >= WEEKEND ) {
                 // after campus day or on the weekend
                 for( int i=0; i<STUDENTS; i++ ) {
@@ -73,6 +79,7 @@ double simulator()
 					if( students[i].catchFlu( locationCounts ) ) {  // Run catch flu, has the location counts as a parameter
 						//students[i].output( cout );  // If someone caught the flu, cout
 						UncleanPeople++;  // Add one to the counter of people infected
+						//cout << UncleanPeople;
 					}
 				}
         	}
@@ -80,7 +87,7 @@ double simulator()
 	}
     
     // Cout the percentage of people infected (People Infected / ( the Number of Students, Minus one because we started with one infected student)
-    //cout << UncleanPeople << " Percentage of Campus Infected: " << UncleanPeople / ( STUDENTS - 1.0 ) * 100.00 << "%" << endl;
+    cout << UncleanPeople << " Percentage of Campus Infected: " << UncleanPeople / ( STUDENTS - 1.0 ) * 100.00 << "%" << endl;
     
     return UncleanPeople / ( STUDENTS - 1.0 ) * 100.00;
 }

@@ -41,9 +41,7 @@ public:
     static const int STUDENT_CENTER = 2;
     static const int REC_CENTER = 3;
     static const int COMMONS = 4;
-//  Probability Resolution
-    static const int theRAND_MAX = 100000;
-    
+
 /*  Functions  */
     //  Advances status_hours and status
     bool nextHour( );

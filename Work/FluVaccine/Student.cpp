@@ -35,13 +35,14 @@ bool Student::nextHour( )
 //  catchFlu function, handles the chances an UNINFECTED student gets the flu
 bool Student::catchFlu( const int locationCounts[] )
 {
-    const int RESOLUTION = theRAND_MAX;  // Resolution of the probability function
+    const int RESOLUTION = RAND_MAX;  // Resolution of the probability function
     const double infectionProb = .0005;  // Inection Probability
     const double buildingFactor[] = {2.6, 1, 2.5, 1, 1, 1, .1, 1.1, 1, 1.5};
     
     if( status != UNINFECTED ) return false;  // If there not uninfected, they can't catch the flu
     
-    double sigma_p  = locationCounts[Student::getLocation()] * buildingFactor[Student::getLocation()] * infectionProb;  // Chance of someone being infected increases the more infectious people are in that area
+    double sigma_p = locationCounts[Student::getLocation()] * buildingFactor[Student::getLocation()] * infectionProb;  // Chance of someone being infected increases the more infectious people are in that area
+    //cout << sigma_p << " ";
     if( status == UNINFECTED ) {  // If their uninfected
         if( rand()%RESOLUTION/double(RESOLUTION) < sigma_p ) {  // If a random number, modded, is less then the probability
             status = INFECTIOUS;  // The person becomes infectious
