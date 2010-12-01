@@ -102,11 +102,9 @@ using namespace std;
     bool Triangle::isEquilateral( ) const
 	{
         double EPSILON = .001;
-        bool equilateral(true);
         for( int i(1); i < SIDES; i++) {
-            equilateral = ( abs( sides[i] - sides[i-1]) <= EPSILON);
-            if( equilateral == false ) return false;
+            if( !( abs( sides[i] - sides[i-1]) <= EPSILON) ) return false;
         }
-        if( !( abs(sides[0] - sides[SIDES - 1] <= EPSILON ))) return false;
+        if( !( abs( sides[0] - sides[SIDES - 1]) <= EPSILON )) return false;
         return true;
 	}
