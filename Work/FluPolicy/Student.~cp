@@ -141,3 +141,25 @@ bool Student::isInfectious() const
         return false;
     }
 }
+
+//  function for vaccinating students
+bool Student::vaccinate()
+{
+  // students already vaccinated will know this, and medical professionals would
+  // not vaccinate someone that has already caught the bug.
+  // In this case, the flu shot has not been used...
+    if( status == Student::VACCINATED || 
+        (status>=Student::SYMPTOMATIC && status<=Student::CURED) ) {
+        return false;
+    }
+
+    // an INFECTIOUS student can be vaccinated, but it doesn't work (the student will
+    // continue to infect other students and will go through the usual stages of flu 
+    // progression.
+    if( status == Student::UNINFECTED ) {
+        setStatus( Student::VACCINATED );
+    }
+
+  // but the vaccine would have been used
+  return true;
+}

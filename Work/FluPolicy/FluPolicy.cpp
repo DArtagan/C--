@@ -21,9 +21,13 @@ int main() {
     
     /*  Simulator  */
     readSeed();  // Sets the seed for rand()
-    for( int i(0); i < N; i++) {
-        cout << "Running simulation " << i << "...\n";
-        average_infected += simulator();
+    for( int d(0); d <= 2; d++ ){
+        for( int f(0); f <= 1; filter++ ) {
+            for( int i(0); i < N; i++) {
+                cout << "Running simulation " << i << "...\n";
+                average_infected += simulator();
+            }
+        }
     }
     
     /*  Results  */
