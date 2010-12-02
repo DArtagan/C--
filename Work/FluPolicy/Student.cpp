@@ -37,7 +37,7 @@ bool Student::catchFlu( const int locationCounts[] )
 {
     const int RESOLUTION = RAND_MAX;  // Resolution of the probability function
     const double infectionProb = .0005;  // Inection Probability
-    const double buildingFactor[] = {2.6, 1, 2.5, 1, 1, 1, .1, 1.1, 1, 1.5};
+    const double buildingFactor[] = {2.6*.85, 1, 2.5, 1, 1, 1, .1, 1.1, 1, 1.5};
     
     if( status != UNINFECTED ) return false;  // If there not uninfected, they can't catch the flu
     
