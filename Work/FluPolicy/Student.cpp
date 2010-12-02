@@ -37,7 +37,7 @@ bool Student::catchFlu( const int locationCounts[] )
 {
     const int RESOLUTION = RAND_MAX;  // Resolution of the probability function
     const double infectionProb = .0005;  // Inection Probability
-    const double buildingFactor[] = {2.6*.85, 1, 2.5, 1, 1, 1, .1, 1.1, 1, 1.5};
+    const double buildingFactor[] = {2.6, 1, 2.5, 1, 1, 1, .1, 1.1, 1, 1.5 *.85 };
     
     if( status != UNINFECTED ) return false;  // If there not uninfected, they can't catch the flu
     
@@ -149,7 +149,7 @@ bool Student::vaccinate()
   // not vaccinate someone that has already caught the bug.
   // In this case, the flu shot has not been used...
     if( status == Student::VACCINATED || 
-        (status>=Student::SYMPTOMATIC && status<=Student::CURED) ) {
+        (status >= Student::SYMPTOMATIC && status<=Student::CURED) ) {
         return false;
     }
 

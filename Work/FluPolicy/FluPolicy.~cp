@@ -42,12 +42,16 @@ double simulator()
     const int HOURS_IN_DAYS(24);
     const int WEEKEND(5);
     const int INITIALLY_VACCINATED(300);
+    const int MONEY(10000);
+    int spent(0);
+    
     
     /*  Variables  */
     Student students[STUDENTS];  //Array size, one Student for each STUDENT
     int UncleanPeople(0);  // Counter of people infected
     
     /*  Body  */
+    spent += 5500;
     students[0].setStatus( Student::INFECTIOUS );  // The simulation must start with one infected student for the flu to spread
     for(int i(1); i <= INITIALLY_VACCINATED; i++) {
         students[i].setStatus( Student::VACCINATED );
