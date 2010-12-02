@@ -12,18 +12,39 @@ void readSeed();
 double simulator();
 
 int main() {
-    /*  Constants and Variables  */
-    int N(200);
+    /*  Constants  */
+    const int N(200);
+    const int totalCost(10000);
+    const int closeSchoolCost(4500);
+    const int vaccineCost(75);
+    const int filterCost(5500);
+
+    /*  Variables  */
     double average_infected(0);
+    int filterBuilding(Student::BUILDINGS + Student::COMMONS);
+    int money(0);
+    int locationOffset(0);
     
     /*  Header  */
     cout << endl << endl << " -- Flu on Campus Simulator --" << endl;
     
     /*  Simulator  */
     readSeed();  // Sets the seed for rand()
-    for( int i(0); i < N; i++) {
-        cout << "Running simulation " << i << "...\n";
-        average_infected += simulator();
+    // air purifier
+    for( ; locationOffset < Student::BUILDINGS + Student::COMMONS - 1; l++ ) {
+    // We need to start with each location, but then we need to try each of the locations with that location and then so on
+        //if( locationOffset == 6 ) locationOffset++;
+        money(0);
+        for( int f(0); f < Student::BUILDINGS + Student::COMMONS - 1; f++ ) {
+            money += filterCost * f;
+            for( int s(0); money + vaccineCost <= totalCost; s++ );
+                if( Student[s].vaccinate( ) ) money += vaccineCost;
+            }
+            for( int i(0); i < N; i++) {
+                cout << "Running simulation " << i << "...\n";
+                average_infected += simulator( locationOffset );
+            }
+        }
     }
     
     /*  Results  */
@@ -33,7 +54,7 @@ int main() {
     return 0;
 }
 
-double simulator()
+double simulator( const int& locationOffset )
 {
     /*  Constants  */
     const int STUDENTS(3000); // Students on campus
@@ -76,7 +97,7 @@ double simulator()
 				}
 				// catchFlu logic
 				for( int i(0); i < STUDENTS; i++ ) {  // Loop for each student
-					if( students[i].catchFlu( locationCounts ) ) {  // Run catch flu, has the location counts as a parameter
+					if( students[i].catchFlu( locationCounts, locationOffset ) ) {  // Run catch flu, has the location counts as a parameter
 						//students[i].output( cout );  // If someone caught the flu, cout
 						UncleanPeople++;  // Add one to the counter of people infected
 						//cout << UncleanPeople;
