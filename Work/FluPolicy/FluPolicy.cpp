@@ -9,7 +9,7 @@
 using namespace std;
 
 void readSeed();
-double simulator();
+double simulator( int sickDays, int filterLocation );
 
 int main() {
     /*  Constants and Variables  */
@@ -22,13 +22,19 @@ int main() {
     /*  Simulator  */
     readSeed();  // Sets the seed for rand()
     for( int d(0); d <= 2; d++ ){
-        for( int f(0); f <= 1; filter++ ) {
+        for( int f(-1); f < Student::BUILDINGS + Student::COMMONS; f++ ) {
             for( int i(0); i < N; i++) {
                 cout << "Running simulation " << i << "...\n";
-                average_infected += simulator();
+                average_infected += simulator( d, f );
+            }
+            if( d == 2 ) { // We can't have any air filters if we have payed for 2 sick days
+                f = 2;
             }
         }
     }
+    // Needs to skip if both sick days are used
+    // Filter location needs to have a location for no filters
+    // Later put in a threshold for the sick days as well
     
     /*  Results  */
     average_infected = average_infected / N;
@@ -37,7 +43,7 @@ int main() {
     return 0;
 }
 
-double simulator()
+double simulator( int sickDays, int filterLocation )
 {
     /*  Constants  */
     const int STUDENTS(3000); // Students on campus
@@ -47,16 +53,39 @@ double simulator()
     const int WEEKEND(5);
     const int INITIALLY_VACCINATED(300);
     
+    const int MONEY(10000);
+    const int vaccineCost(75);
+    const int filterCost(5500);
+    const int sickDayCost(4500);
+    const double infectionThreshold(.1);
+    
     /*  Variables  */
     Student students[STUDENTS];  //Array size, one Student for each STUDENT
     int UncleanPeople(0);  // Counter of people infected
+    int spent(0);
+    int vaccinated(0);
     
-    /*  Body  */
+    /*  Initial conditions for the student body  */
     students[0].setStatus( Student::INFECTIOUS );  // The simulation must start with one infected student for the flu to spread
-    for(int i(1); i <= INITIALLY_VACCINATED; i++) {
+    for(int i(1); i <= INITIALLY_VACCINATED; i++) {  // Some students come to the school already vaccinated
         students[i].setStatus( Student::VACCINATED );
     }
     
+    spent += sickDays * sickDayCost;
+    if( filterLocation != 6 ) { // No air filters on Kafadar
+        spent += bool( 1 + filterLocation ) * filterCost; // As long as filterLocation != -1, there is a filter being installed
+    }
+    // Fix this one so that it has an option for a location with no filters
+    
+    /*  Vaccinate with the remaining money  */
+    while( spent + vaccineCost <= MONEY ) {
+        if( students[ rand() % STUDENTS ].vaccinate() ) {
+            spent += vaccineCost;
+            vaccinated++;
+        }
+    }
+    
+    /*  Simulation loop  */
 	for( int d(0); d < WEEKS_IN_SEMESTER * DAYS_IN_WEEK; d++ ) {  // Loop for each day in a semester
 		for( int h(0); h < HOURS_IN_DAYS; h++ ) {  // Loop for each hour in a day
     		//cout << h << endl;
@@ -80,7 +109,7 @@ double simulator()
 				}
 				// catchFlu logic
 				for( int i(0); i < STUDENTS; i++ ) {  // Loop for each student
-					if( students[i].catchFlu( locationCounts ) ) {  // Run catch flu, has the location counts as a parameter
+					if( students[i].catchFlu( locationCounts, filterLocation ) ) {  // Run catch flu, has the location counts as a parameter
 						//students[i].output( cout );  // If someone caught the flu, cout
 						UncleanPeople++;  // Add one to the counter of people infected
 						//cout << UncleanPeople;

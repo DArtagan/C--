@@ -46,7 +46,7 @@ public:
     //  Advances status_hours and status
     bool nextHour( );
     //  Handles the possibility of a 'U' becoming an 'I'
-    bool catchFlu( const int locationCounts[] );
+    bool catchFlu( const int locationCounts[], const int filterLocation );
     ostream& output( ostream& os ) const;
     //  accessor function to get the status
     int getStatus( ) const;
@@ -60,6 +60,8 @@ public:
     int getLocation( ) const;
     //  accessor to return whether their infectious
     bool isInfectious() const;
+    //  function for vaccinating students
+    bool vaccinate();
 private:
 /*  Helper Functions  */
     //  Create a random schedule
@@ -68,8 +70,6 @@ private:
     void shuffle_schedule( const int dayIndex );
     //  get the duration for the current status
     int getDuration() const;
-    //  function for vaccinating students
-    bool Student::vaccinate();
 
 /*  Data Members  */
     int status;
