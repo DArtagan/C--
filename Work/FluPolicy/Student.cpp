@@ -33,14 +33,14 @@ bool Student::nextHour( )
 }
 
 //  catchFlu function, handles the chances an UNINFECTED student gets the flu
-bool Student::catchFlu( const int locationCounts[], const int filterLocation )
+bool Student::catchFlu( const int locationCounts[], int filterLocation )
 {
     const int RESOLUTION = RAND_MAX;  // Resolution of the probability function
     const double infectionProb = .0005;  // Inection Probability
     double buildingFactor[] = {2.6, 1, 2.5, 1, 1, 1, .1, 1.1, 1, 1.5};
 
     // The air filter factor
-    if( filterLocation != -1 || filterLocation != 6 ) {
+    if( filterLocation != 6 ) {
         buildingFactor[filterLocation] = buildingFactor[filterLocation] * .85;
     }
         

@@ -46,7 +46,7 @@ public:
     //  Advances status_hours and status
     bool nextHour( );
     //  Handles the possibility of a 'U' becoming an 'I'
-    bool catchFlu( const int locationCounts[], const int filterLocation );
+    bool catchFlu( const int locationCounts[], int filterLocation );
     ostream& output( ostream& os ) const;
     //  accessor function to get the status
     int getStatus( ) const;

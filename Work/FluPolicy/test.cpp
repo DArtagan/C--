@@ -7,10 +7,10 @@
 
 using namespace std;
 
-int test( ) 
+int test( const int theVar ) 
 {
 	int thisNumber(100);
-	thisNumber = thisNumber * .85;
+	thisNumber = thisNumber * .85 * theVar;
 	return thisNumber;
 }
 	
@@ -23,6 +23,7 @@ int main()
 	int spent(0);
 	int random;
 	int theBool;
+	int theVar;
 	
 	/*for( int i(0); i < 10; i++) {
 		random = rand() % 10;
@@ -32,7 +33,8 @@ int main()
 	}*/
 	
 	for( int i(0); i < 10; i++ ) {
-		cout << test( ) << endl;
+		cin >> theVar;
+		cout << test( theVar ) << endl;
 	}
     
     /*  Footer  */

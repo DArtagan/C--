@@ -13,22 +13,32 @@ double simulator( int sickDays, int filterLocation );
 
 int main() {
     /*  Constants and Variables  */
-    int N(200);
+    const int N(200);
+    const int SIZE( 2 * (Student::BUILDINGS + Student::COMMONS) + 1 ); // 21 Ways this could go
     double average_infected(0);
+    double simulationResults[ SIZE ] = {};
+    int counter(0);
     
     /*  Header  */
-    cout << endl << endl << " -- Flu on Campus Simulator --" << endl;
+    cout << " -- Flu on Campus Simulator --" << endl;
     
     /*  Simulator  */
     readSeed();  // Sets the seed for rand()
     for( int d(0); d <= 2; d++ ){
-        for( int f(-1); f < Student::BUILDINGS + Student::COMMONS; f++ ) {
+        for( int f(0); f < Student::BUILDINGS + Student::COMMONS; f++ ) {
+            if( d == 2 ) { // We can't have any air filters if we have payed for 2 sick days
+                f = 6; // Location 6 (Kafadar) is the one place we can't install a filter, thus it is the representation of no filters
+            }
             for( int i(0); i < N; i++) {
-                cout << "Running simulation " << i << "...\n";
+                cout << d << ", " << f << ", " << counter << ": Running simulation " << i << "...\n";
                 average_infected += simulator( d, f );
             }
+            average_infected = average_infected / N;
+            cout << endl << d << ", " << f << ", " << counter << ": There was an average infection rate of the campus of " << average_infected << "%" << endl << endl << endl;
+            simulationResults[counter] = average_infected;
+            counter++;
             if( d == 2 ) { // We can't have any air filters if we have payed for 2 sick days
-                f = 2;
+                f = Student::BUILDINGS + Student::COMMONS;
             }
         }
     }
@@ -37,8 +47,11 @@ int main() {
     // Later put in a threshold for the sick days as well
     
     /*  Results  */
-    average_infected = average_infected / N;
-    cout << endl << endl << "There was an average infection rate of the campus of " << average_infected << "%" << endl << endl << endl;
+    cout << endl << endl;
+    for( int i(0); i < SIZE; i++ ) {
+        cout << simulationResults[i] << endl;
+    }
+    cout << endl << endl;
     system("PAUSE");
     return 0;
 }
@@ -64,6 +77,7 @@ double simulator( int sickDays, int filterLocation )
     int UncleanPeople(0);  // Counter of people infected
     int spent(0);
     int vaccinated(0);
+    int closedDays(0);
     
     /*  Initial conditions for the student body  */
     students[0].setStatus( Student::INFECTIOUS );  // The simulation must start with one infected student for the flu to spread
@@ -73,7 +87,7 @@ double simulator( int sickDays, int filterLocation )
     
     spent += sickDays * sickDayCost;
     if( filterLocation != 6 ) { // No air filters on Kafadar
-        spent += bool( 1 + filterLocation ) * filterCost; // As long as filterLocation != -1, there is a filter being installed
+        spent += filterCost; // As long as filterLocation != -1, there is a filter being installed
     }
     // Fix this one so that it has an option for a location with no filters
     
@@ -100,27 +114,31 @@ double simulator( int sickDays, int filterLocation )
 					students[i].updateLocation( d%Student::DAYS, h );
 					students[i].nextHour();  // Move things forward one hour
 				}
-				// count locations
-				int locationCounts[Student::BUILDINGS + Student::COMMONS] = {};  // Initiate an array of locations to zero
-				for( int i(0); i < STUDENTS; i++ ) {  // Loop for each student
-					if( students[i].isInfectious() ) {  // Loop for each student during that hour
-						locationCounts[students[i].getLocation()]++;  // Add one to each location when a student in that location is infectious
-					}
-				}
-				// catchFlu logic
-				for( int i(0); i < STUDENTS; i++ ) {  // Loop for each student
-					if( students[i].catchFlu( locationCounts, filterLocation ) ) {  // Run catch flu, has the location counts as a parameter
-						//students[i].output( cout );  // If someone caught the flu, cout
-						UncleanPeople++;  // Add one to the counter of people infected
-						//cout << UncleanPeople;
-					}
-				}
+				if( UncleanPeople / ( STUDENTS - 1.0 ) >= infectionThreshold && closedDays < sickDays ) {
+                    closedDays++;
+                } else {
+				    // count locations
+				    int locationCounts[Student::BUILDINGS + Student::COMMONS] = {};  // Initiate an array of locations to zero
+				    for( int i(0); i < STUDENTS; i++ ) {  // Loop for each student
+				    	if( students[i].isInfectious() ) {  // Loop for each student during that hour
+						  locationCounts[students[i].getLocation()]++;  // Add one to each location when a student in that location is infectious
+					   }
+				    }
+				    // catchFlu logic
+				    for( int i(0); i < STUDENTS; i++ ) {  // Loop for each student
+					   if( students[i].catchFlu( locationCounts, filterLocation ) ) {  // Run catch flu, has the location counts as a parameter
+						  //students[i].output( cout );  // If someone caught the flu, cout
+						  UncleanPeople++;  // Add one to the counter of people infected
+						  //cout << UncleanPeople;
+					   }
+				    }
+                }
         	}
 		}
 	}
     
     // Cout the percentage of people infected (People Infected / ( the Number of Students, Minus one because we started with one infected student)
-    cout << UncleanPeople << " Percentage of Campus Infected: " << UncleanPeople / ( STUDENTS - 1.0 ) * 100.00 << "%" << endl;
+    cout << /*UncleanPeople <<*/ " Percentage of Campus Infected: " << UncleanPeople / ( STUDENTS - 1.0 ) * 100.00 << "%" << endl;
     
     return UncleanPeople / ( STUDENTS - 1.0 ) * 100.00;
 }
