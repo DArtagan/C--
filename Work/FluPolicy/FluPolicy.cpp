@@ -9,36 +9,67 @@
 using namespace std;
 
 void readSeed();
-double simulator( int sickDays, int filterLocation );
+double simulator( int sickDays, int filterLocation, double infectionThreshold );
 
 int main() {
-    /*  Constants and Variables  */
+    /*  Constants  */
     const int N(200);
-    const int SIZE( 2 * (Student::BUILDINGS + Student::COMMONS) + 1 ); // 21 Ways this could go
+    
+    /*  Variables  */
     double average_infected(0);
-    double simulationResults[ SIZE ] = {};
     int counter(0);
+    double minThreshold;
+    double maxThreshold;
+    double increment;
     
     /*  Header  */
     cout << " -- Flu on Campus Simulator --" << endl;
     
-    /*  Simulator  */
+    /*  User Prompts  */
     readSeed();  // Sets the seed for rand()
+    cout << "What would you like the minimum tested threshold for the sick day to be: " << flush;
+    cin >> minThreshold;
+    cout << endl << "What would you like the maximum tested threshold for the sick day to be: " << flush;
+    cin >> maxThreshold;
+    cout << endl << "How many increments should be tested for the sick day thresholds: " << flush;
+    cin >> increment;
+    cout << endl << endl;
+    
+    int SIZE( 2 * (Student::BUILDINGS + Student::COMMONS) * int(increment) + int(increment) ); // The ways this could go, depends on what threshold is chosen
+    double* const simulationResults = new(nothrow) double[SIZE];
+    if( simulationResults == NULL ) {
+        cout << "Error when commandeering memory." << endl;
+        exit(1);
+    }
+    
+    /*  Simulator  */
     for( int d(0); d <= 2; d++ ){
-        for( int f(0); f < Student::BUILDINGS + Student::COMMONS; f++ ) {
-            if( d == 2 ) { // We can't have any air filters if we have payed for 2 sick days
-                f = 6; // Location 6 (Kafadar) is the one place we can't install a filter, thus it is the representation of no filters
-            }
-            for( int i(0); i < N; i++) {
-                cout << d << ", " << f << ", " << counter << ": Running simulation " << i << "...\n";
-                average_infected += simulator( d, f );
-            }
-            average_infected = average_infected / N;
-            cout << endl << d << ", " << f << ", " << counter << ": There was an average infection rate of the campus of " << average_infected << "%" << endl << endl << endl;
-            simulationResults[counter] = average_infected;
-            counter++;
-            if( d == 2 ) { // We can't have any air filters if we have payed for 2 sick days
-                f = Student::BUILDINGS + Student::COMMONS;
+        double t;
+        double tempMaxThreshold;
+        if( d == 0 ) {
+            t = 101;
+            tempMaxThreshold = 101;
+        } else {
+            t = minThreshold;
+            tempMaxThreshold = maxThreshold;
+            increment = (maxThreshold - minThreshold) / (increment - 1 );
+        }
+        for( ; t <= tempMaxThreshold; t + increment) {
+            for( int f(0); f < Student::BUILDINGS + Student::COMMONS; f++ ) {
+                if( d == 2 ) { // We can't have any air filters if we have payed for 2 sick days
+                    f = 6; // Location 6 (Kafadar) is the one place we can't install a filter, thus it is the representation of no filters
+                }
+                for( int i(0); i < N; i++) {
+                    cout << d << ", " << f << ", " << counter << ": Running simulation " << i << "...\n";
+                    average_infected += simulator( d, f, t );
+                }
+                average_infected = average_infected / N;
+                cout << endl << d << ", " << f << ", " << counter << ": There was an average infection rate of the campus of " << average_infected << "%" << endl << endl << endl;
+                simulationResults[counter] = average_infected;
+                counter++;
+                if( d == 2 ) { // We can't have any air filters if we have payed for 2 sick days
+                    f = Student::BUILDINGS + Student::COMMONS;
+                }
             }
         }
     }
@@ -53,10 +84,11 @@ int main() {
     }
     cout << endl << endl;
     system("PAUSE");
+    delete[] simulationResults;
     return 0;
 }
 
-double simulator( int sickDays, int filterLocation )
+double simulator( int sickDays, int filterLocation, double infectionThreshold )
 {
     /*  Constants  */
     const int STUDENTS(3000); // Students on campus
@@ -70,7 +102,7 @@ double simulator( int sickDays, int filterLocation )
     const int vaccineCost(75);
     const int filterCost(5500);
     const int sickDayCost(4500);
-    const double infectionThreshold(.1);
+    //const double infectionThreshold(.1);
     
     /*  Variables  */
     Student students[STUDENTS];  //Array size, one Student for each STUDENT
@@ -114,7 +146,7 @@ double simulator( int sickDays, int filterLocation )
 					students[i].updateLocation( d%Student::DAYS, h );
 					students[i].nextHour();  // Move things forward one hour
 				}
-				if( UncleanPeople / ( STUDENTS - 1.0 ) >= infectionThreshold && closedDays < sickDays ) {
+				if( UncleanPeople / ( STUDENTS - 1.0 ) * 100 >= infectionThreshold && closedDays < sickDays ) {
                     closedDays++;
                 } else {
 				    // count locations
