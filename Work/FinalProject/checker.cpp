@@ -1,3 +1,6 @@
+//
+//  A program to check a sudoku puzzle for validity
+//
 #include <cstdlib>
 #include <iostream>
 
@@ -10,20 +13,4 @@ int main()
 {
     system("PAUSE");
     return 0;
-}
-
-//////////////////////
-
-//
-//	Sudoku Program
-//
-
-bool testSudoku();
-
-int main () {
-	// All things done through functions that come from another header file.
-}
-
-bool testSudoku () {
-
 }
