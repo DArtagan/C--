@@ -17,7 +17,10 @@ public:
 	RowNColumn( );
 	RowNColumn( const int theArray[] );
 	RowNColumn( const string& theName, const int theArray[] );
-/*  Operators  */	
+/*  Operators  */
+    friend istream& operator>>( ostream& is, RowNColumn rhs );
+    friend ostream& operator<<( ostream& os, const RowNColumn rhs );
+	
 /*  Accessors  */
     // Get the 3x3s name
     string getName( ) const;

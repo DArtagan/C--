@@ -1,7 +1,6 @@
 //
 //	RowNColumn class implementation file
 //
-#pragma once
 #include <cstdlib>
 #include <iostream>
 
@@ -40,6 +39,27 @@ using namespace std;
         fork = 0;
     }
 /*  Operators  */	
+    istream& operator>>( ostream& is, RowNColumn rhs ) {
+        {
+        double tempValue;
+        for( int i(0); i < RowNColumn::LIMIT; i++ ) {
+            if( !( is >> tempValue )) {
+                is.setstate( ios::failbit );
+                return is;
+            } else {
+                rhs.SudokuSequence[i] = tempValue;
+            }
+        }
+        return is;
+    }
+    ostream& operator<<( ostream& os, const RowNColumn rhs ) {
+        os << rhs.name;
+        for( int i(0); i < RowNColumn::LIMIT; i++) {
+            os << rhs.SudokuSequence[i];
+        }
+        return os;
+    }
+    
 /*  Accessors  */
     // Gets the name
     string RowNColumn::getName( ) const {

@@ -1,7 +1,6 @@
 //
 //	ThreeByThree implementation file
 //
-#pragma once
 #include <cstdlib>
 #include <iostream>
 
@@ -45,9 +44,26 @@ using namespace std;
         fork = theFork;
     }
 /*  Operators  */	
-	/*friend ostream& operator<<( ostream& os, ThreeByThree rhs ) {
-        
-    }*/
+	istream& operator>>( ostream& is, ThreeByThree rhs ) {
+        {
+        double tempValue;
+        for( int i(0); i < RowNColumn::LIMIT; i++ ) {
+            if( !( is >> tempValue )) {
+                is.setstate( ios::failbit );
+                return is;
+            } else {
+                rhs.SudokuSequence[i] = tempValue;
+            }
+        }
+        return is;
+    }
+    ostream& operator<<( ostream& os, const ThreeByThree rhs ) {
+        os << rhs.name;
+        for( int i(0); i < RowNColumn::LIMIT; i++) {
+            os << rhs.SudokuSequence[i];
+        }
+        return os;
+    }
 /*  Accessors  */
     // Returns the name of the 3x3
 	string ThreeByThree::getName( ) const {

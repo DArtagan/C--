@@ -18,7 +18,8 @@ public:
 	ThreeByThree( const string& theName, const int theArray[][BOUND] );
 	ThreeByThree( const string& theName, const int theArray[][BOUND], const bool isSolved, const int theFork );
 /*  Operators  */	
-	//friend ostream& operator<<( ostream& os, ThreeByThree rhs );
+    friend istream& operator>>( ostream& is, ThreeByThree rhs );
+    friend ostream& operator<<( ostream& os, const ThreeByThree rhs );
 /*  Accessors  */
 	// Returns the name of the 3x3
 	string getName( ) const;
