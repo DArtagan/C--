@@ -9,17 +9,15 @@
 using namespace std;
 
 /*  ctor declarations  */
-    // A default ctor might not be important
-	/* ThreeByThree::ThreeByThree( ) {
-        name = "1"; *** 3x3s are named starting at the top, always at the left and moving right, down a row then moving right again
+	ThreeByThree::ThreeByThree( ) {
+        name = "1";
         for( int i(0); i < BOUND; i++ ) {
             for( int j(0); j < BOUND; j++ ) {
                 SudokuBlock[i][j] = 0;
             }
         }
         solved = false;
-        fork = 0;
-    }*/
+    }
     // ctor for a defined name and array
 	ThreeByThree::ThreeByThree( const string& theName, const int theArray[][BOUND] ) {
         name = theName;
@@ -29,10 +27,9 @@ using namespace std;
             }
         }
         solved = false;
-        fork = 0;
     }
-    // ctor for a defined name and array and solved vale and fork value
-    ThreeByThree::ThreeByThree( const string& theName, const int theArray[][BOUND], const bool isSolved, const int theFork ) {
+    // ctor for a defined name and array and solved bool
+    ThreeByThree::ThreeByThree( const string& theName, const int theArray[][BOUND], const bool isSolved ) {
         name = theName;
         for( int i(0); i < BOUND; i++ ) {
             for( int j(0); j < BOUND; j++ ) {
@@ -41,26 +38,29 @@ using namespace std;
             }
         }
         solved = isSolved;
-        fork = theFork;
     }
 /*  Operators  */	
-	istream& operator>>( ostream& is, ThreeByThree rhs ) {
+	istream& operator>>( istream& is, ThreeByThree rhs ) {
         {
         double tempValue;
-        for( int i(0); i < RowNColumn::LIMIT; i++ ) {
-            if( !( is >> tempValue )) {
-                is.setstate( ios::failbit );
-                return is;
-            } else {
-                rhs.SudokuSequence[i] = tempValue;
+        for( int i(0); i < ThreeByThree::BOUND; i++ ) {
+            for( int j(0); j < ThreeByThree::BOUND; j++ ) {
+                if( !( is >> tempValue )) {
+                    is.setstate( ios::failbit );
+                    return is;
+                } else {
+                    rhs.SudokuBlock[i][j] = tempValue;
+                }
             }
         }
         return is;
     }
     ostream& operator<<( ostream& os, const ThreeByThree rhs ) {
         os << rhs.name;
-        for( int i(0); i < RowNColumn::LIMIT; i++) {
-            os << rhs.SudokuSequence[i];
+        for( int i(0); i < ThreeByThree::BOUND; i++ ) {
+            for( int j(0); j < ThreeByThree::BOUND; j++ ) {
+                os << rhs.SudokuBlock[i][j];
+            }
         }
         return os;
     }
@@ -77,10 +77,6 @@ using namespace std;
 	bool ThreeByThree::getSolved( ) const {
         return solved;
     }
-    // Returns the fork of the 3x3
-	int ThreeByThree::getFork( ) const {
-        return fork;
-    }
     // Sets the name
     void ThreeByThree::setName( const string& theName ) {
         name = theName;
@@ -92,10 +88,6 @@ using namespace std;
     // Sets whether this array is solved or not
 	void ThreeByThree::setSolved( const bool isSolved ) {
         solved = isSolved;
-    }
-    // Sets the fork of this 3x3
-	void ThreeByThree::setFork( const int theFork ) { 
-        fork = theFork;
     }
 	
 /*  Functions  */
@@ -128,10 +120,9 @@ using namespace std;
     }
 
 /*  Helper Functions  */
-	/*bool ThreeByThree::guess( );  // (Might not be a good idea to guess*/
+
 /*  Data Members  
     string name;  // Name of the 3x3
 	int SudokuBlock[BOUND][BOUND];  // Holds the actual values
 	bool solved;   // Tells whether the row/column is indisputably solved, so we don't need to re-test
-	int fork;  // Keeps track of the forks we make when guessing
     */

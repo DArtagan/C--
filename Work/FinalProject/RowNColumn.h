@@ -13,12 +13,14 @@ public:
 /*  Constants  */
 	static const int LIMIT = 9;
 	static const int BOUND = 3;
+	static const int ROW = 0;
+	static const int COLUMN = 1;
 /*  ctor declarations  */
 	RowNColumn( );
 	RowNColumn( const int theArray[] );
-	RowNColumn( const string& theName, const int theArray[] );
+	RowNColumn( const string& theName, const int theArray[], const int theType );
 /*  Operators  */
-    friend istream& operator>>( ostream& is, RowNColumn rhs );
+    friend istream& operator>>( istream& is, RowNColumn rhs );
     friend ostream& operator<<( ostream& os, const RowNColumn rhs );
 	
 /*  Accessors  */
@@ -29,7 +31,7 @@ public:
 	// Return whether the square is solved or not
 	bool getSolved( ) const;
 	// Return which fork this is on
-	int getFork( ) const;
+	int getType( ) const;
 	// Sets the RowNColumns name
 	void setName( const string& theName );
 	// Sets a specific value in the array
@@ -37,7 +39,7 @@ public:
 	// Set this RowNColumn as solved or not
 	void setSolved( const bool isSolved );
 	// Set the fork for this RowNColumn
-	void setFork( const bool theFork );
+	void setType( const int theType );
 /*  Functions  */
     // Tests the class for repeated numbers
 	bool test( ) const;
@@ -49,5 +51,5 @@ private:
 	string name;
 	int SudokuSequence[LIMIT];
 	bool solved;
-	int fork;
+    int type;  // 0 for Row, 1 for Column
 };

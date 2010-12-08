@@ -17,7 +17,7 @@ using namespace std;
             SudokuSequence[i] = 0;
         }
         solved = false;
-        fork = 0;
+        type = 0;
     }
     // RowNColumn with only the array values given
 	RowNColumn::RowNColumn( const int theArray[] ) {
@@ -26,7 +26,7 @@ using namespace std;
             SudokuSequence[i] = 0;
         }
         solved = false;
-        fork = 0;
+        type = 0;
     }
     // RowNColumn with both a name and the array values given
     // *** We should probably just have this ctor, the others probably aren't necessary
@@ -36,12 +36,12 @@ using namespace std;
             SudokuSequence[i] = theArray[i];
         }
         solved = false;
-        fork = 0;
+        type = 0;
     }
 /*  Operators  */	
-    istream& operator>>( ostream& is, RowNColumn rhs ) {
+    istream& operator>>( istream& is, RowNColumn rhs ) {
         {
-        double tempValue;
+        int tempValue;
         for( int i(0); i < RowNColumn::LIMIT; i++ ) {
             if( !( is >> tempValue )) {
                 is.setstate( ios::failbit );
@@ -73,9 +73,9 @@ using namespace std;
 	bool RowNColumn::getSolved( ) const {
         return solved;
     }
-	// Return which fork this is on
-	int RowNColumn::getFork( ) const {
-        return fork;
+	// Return which type, row or column, this is
+	int RowNColumn::getType( ) const {
+        return type;
     }
 	// Sets the RowNColumns name
 	void RowNColumn::setName( const string& theName ) {
@@ -89,9 +89,9 @@ using namespace std;
 	void RowNColumn::setSolved( const bool isSolved ) {
         solved = isSolved;
     }
-	// Set the fork for this RowNColumn
-	void RowNColumn::setFork( const bool theFork ) {
-        fork = theFork;
+	// Set the type for this RowNColumn
+	void RowNColumn::setType( const bool theType ) {
+        type = theType;
     }
     
 /*  Functions  */
@@ -99,15 +99,27 @@ using namespace std;
 	bool RowNColumn::test( ) const {
         // Variables
         bool theTest = true;
+        int errorArray[LIMIT] = {};
         
         // Test each value in the array against the values before it, starting at index 1
         for( int i(1); i < LIMIT ; i++ ) {
             for( int j(i - 1); j >= 0 ; j-- ) {
                 if( SudokuSequence[i] == SudokuSequence[j] ) {
+                    errorArray[i] = SudokuSequence[i];
+                    errorArray[j] = SudokuSequence[j];
                     theTest = false;
                 }
             }
         }
+        if( theTest == false ) {
+            switch type {
+                case 0:
+                    cout << "Row " << flush;
+                case 1:
+                    cout << "Column " << flush;
+            }
+            cout << name << ": "
+           // for( char i('A') << x 
         
         return theTest;
     }
@@ -118,5 +130,5 @@ using namespace std;
 	string name;
 	int SudokuSequence[LIMIT];
 	bool solved;
-	int fork;
+	int type;
     */
