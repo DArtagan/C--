@@ -30,17 +30,16 @@ using namespace std;
     }
     // RowNColumn with both a name and the array values given
     // *** We should probably just have this ctor, the others probably aren't necessary
-    RowNColumn::RowNColumn( const string& theName, const int theArray[] ) {
+    RowNColumn::RowNColumn( const string& theName, const int theArray[], const int theType ) {
         name = theName;
         for( int i(0); i < LIMIT; i++ ) {
             SudokuSequence[i] = theArray[i];
         }
         solved = false;
-        type = 0;
+        type = theType;
     }
 /*  Operators  */	
     istream& operator>>( istream& is, RowNColumn rhs ) {
-        {
         int tempValue;
         for( int i(0); i < RowNColumn::LIMIT; i++ ) {
             if( !( is >> tempValue )) {
@@ -51,6 +50,19 @@ using namespace std;
             }
         }
         return is;
+    }
+    bool operator>>( const int lhs[], RowNColumn rhs ) {
+        int tempValues[RowNColumn::LIMIT];
+        bool test = true;
+        for( int i(0); i < RowNColumn::LIMIT; i++ ) {
+            if( !( lhs[i] >> tempValues[i] )) {
+                test = false;
+                return test;
+            } else {
+                rhs.SudokuSequence[i] = tempValues[i];
+            }
+        }
+        return test;
     }
     ostream& operator<<( ostream& os, const RowNColumn rhs ) {
         os << rhs.name;
@@ -90,7 +102,7 @@ using namespace std;
         solved = isSolved;
     }
 	// Set the type for this RowNColumn
-	void RowNColumn::setType( const bool theType ) {
+	void RowNColumn::setType( const int theType ) {
         type = theType;
     }
     
@@ -111,7 +123,7 @@ using namespace std;
                 }
             }
         }
-        if( theTest == false ) {
+        /*if( theTest == false ) {
             switch type {
                 case 0:
                     cout << "Row " << flush;
@@ -119,7 +131,7 @@ using namespace std;
                     cout << "Column " << flush;
             }
             cout << name << ": "
-           // for( char i('A') << x 
+            for( char i('A') << x */
         
         return theTest;
     }

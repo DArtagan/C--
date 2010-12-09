@@ -41,8 +41,7 @@ using namespace std;
     }
 /*  Operators  */	
 	istream& operator>>( istream& is, ThreeByThree rhs ) {
-        {
-        double tempValue;
+        int tempValue;
         for( int i(0); i < ThreeByThree::BOUND; i++ ) {
             for( int j(0); j < ThreeByThree::BOUND; j++ ) {
                 if( !( is >> tempValue )) {
@@ -54,6 +53,21 @@ using namespace std;
             }
         }
         return is;
+    }
+    bool operator>>( const int lhs[][ThreeByThree::BOUND], ThreeByThree rhs ) {
+        int tempValues[ThreeByThree::BOUND][ThreeByThree::BOUND];
+        bool test = true;
+        for( int i(0); i < ThreeByThree::BOUND; i++ ) {
+            for( int j(0); j < ThreeByThree::BOUND; j++ ) {
+                if( !( lhs[i][j] >> tempValues[i][j] )) {
+                    test = false;
+                    return test;
+                } else {
+                    rhs.SudokuBlock[i][j] = tempValues[i][j];
+                }
+            }
+        }
+        return test;
     }
     ostream& operator<<( ostream& os, const ThreeByThree rhs ) {
         os << rhs.name;

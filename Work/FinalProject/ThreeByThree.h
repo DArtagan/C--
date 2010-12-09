@@ -19,6 +19,7 @@ public:
 	ThreeByThree( const string& theName, const int theArray[][BOUND], const bool isSolved );
 /*  Operators  */	
     friend istream& operator>>( istream& is, ThreeByThree rhs );
+    friend bool operator>>( const int lhs[][ThreeByThree::BOUND], ThreeByThree rhs );
     friend ostream& operator<<( ostream& os, const ThreeByThree rhs );
 /*  Accessors  */
 	// Returns the name of the 3x3
