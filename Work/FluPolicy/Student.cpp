@@ -40,7 +40,7 @@ bool Student::catchFlu( const int locationCounts[], int filterLocation )
     double buildingFactor[] = {2.6, 1, 2.5, 1, 1, 1, .1, 1.1, 1, 1.5};
 
     // The air filter factor
-    if( filterLocation != 6 ) {
+    if( filterLocation != ( Student::BUILDINGS + Student::KAFADAR ) ) {
         buildingFactor[filterLocation] = buildingFactor[filterLocation] * .85;
     }
         
