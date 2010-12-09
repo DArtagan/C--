@@ -66,6 +66,21 @@ void input(int arrayValues[9][9])
     cout<<lineout<<endl;
 }
 
+void readSeed() 
+{
+    /*  Variables  */
+    int n;
+
+    /*  Seed Prompt  */
+    cout << "What would you like the seed for rand() to be? (If 0, use wall clock)" << endl;
+    cin >> n;
+    cout << endl << endl;
+    if( n == 0 ) {
+        n = unsigned(time(0));  // Wallclock
+    }
+    srand(n);
+}
+
 //      Sudoku Checker main routine
 
 int main()
@@ -96,32 +111,67 @@ int main()
 
     //  Prompt the user for input of the known numbers
    
-    cout<<"++++++++++++Sudoku Checker+++++++++++++"<<endl<<endl;
-    cout<<"Please enter the given values in the sudoku puzzle."<<endl;
-    cout<<"Enter all blanks as zeros (0) and separatte inputs by a space."<<endl;
-   
-   
-   
-    for(int i=0; i<puzzlesize; i++)
+    bool dobreak = false;
+    for(int i=0; i<puzzlesize && !dobreak; i++)
     {
        for(int j=0; j<puzzlesize; j++)
        {
            cout<<"++++++++++++Sudoku Checker+++++++++++++"<<endl<<endl;
            cout<<"Please enter the given values in the sudoku puzzle."<<endl;
            cout<<"Enter all blanks as zeros (0) and separate inputs by a space."<<endl;
+           cout << "Enter 10, random values fill the puzzle; enter 11, create a valid puzzle." << endl;
+           cout << endl;
            input(givenpuzzle);
            cout<<"Please enter "<<coordinates[i][j]<<" "<<flush;
            //  Proofreading the input
            cin>>prompt;
-           while(((prompt<0) || (prompt>9)))
+           while(((prompt<0) || (prompt>11)))
            {
                cout<<"Please enter "<<coordinates[i][j]<<" "<<flush;
                cin>>prompt;
            }
-           
+            if( prompt == 10 ) {
+                readSeed();
+                for( int k(i); k < puzzlesize; k++ ) {
+                    for( int l(j); l < puzzlesize; l++ ) {
+                        givenpuzzle[k][l] = rand() % puzzlesize + 1;
+                    }
+                }
+                system("CLS");
+                cout<<"++++++++++++Sudoku Checker+++++++++++++"<<endl<<endl;
+                cout<<"Please enter the given values in the sudoku puzzle."<<endl;
+                cout<<"Enter all blanks as zeros (0) and separate inputs by a space."<<endl;
+                cout << "Enter 10, random values fill the puzzle; enter 11, create a valid puzzle." << endl;
+                cout << endl;
+                input(givenpuzzle);
+                dobreak = true;
+                break;
+            } else if( prompt == 11 ) {
+                int counter(0);
+                for( int k(0); k < puzzlesize; k++ ) {
+                    counter += 2;
+                    for( int l(0); l < puzzlesize; l++ ) {
+                        if( counter == puzzlesize ) counter++;
+                        //if( counter == 2*puzzlesize ) counter++;
+                        counter++;
+                        givenpuzzle[k][l] = counter % 9 + 1;
+                    }
+                }
+                system("CLS");
+                cout<<"++++++++++++Sudoku Checker+++++++++++++"<<endl<<endl;
+                cout<<"Please enter the given values in the sudoku puzzle."<<endl;
+                cout<<"Enter all blanks as zeros (0) and separate inputs by a space."<<endl;
+                cout << "Enter 10, random values fill the puzzle; enter 11, create a valid puzzle." << endl;
+                cout << endl;
+                input(givenpuzzle);
+                dobreak = true;
+                break;
+            } else {
            givenpuzzle[i][j]=prompt;
+            }
            
            system("CLS");
+    
        }       
     }
    

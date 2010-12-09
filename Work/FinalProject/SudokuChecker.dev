@@ -1,7 +1,7 @@
 [Project]
 FileName=SudokuChecker.dev
 Name=SudokuChecker
-UnitCount=5
+UnitCount=7
 Type=1
 Ver=1
 ObjFiles=
@@ -96,4 +96,24 @@ OriginalFilename=
 ProductName=
 ProductVersion=
 AutoIncBuildNr=0
+
+[Unit6]
+FileName=display.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=checker.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
 
