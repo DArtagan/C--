@@ -1,0 +1,36 @@
+# Project: SudokuChecker
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = checker.o ThreeByThree.o RowNColumn.o $(RES)
+LINKOBJ  = checker.o ThreeByThree.o RowNColumn.o $(RES)
+LIBS =  -L"C:/sw/Dev-Cpp/lib" C:/Sw/Dev-Cpp/lib/crt2.o -nostartfiles  
+INCS =  -I"C:/sw/Dev-Cpp/include" 
+CXXINCS =  -I"C:/sw/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/sw/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/sw/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/sw/Dev-Cpp/include/c++/3.4.2"  -I"C:/sw/Dev-Cpp/include" 
+BIN  = SudokuChecker.exe
+CXXFLAGS = $(CXXINCS)   -g -Wall -pedantic -ansi
+CFLAGS = $(INCS)   -g -Wall -pedantic -ansi
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before SudokuChecker.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "SudokuChecker.exe" $(LIBS)
+
+checker.o: checker.cpp
+	$(CPP) -c checker.cpp -o checker.o $(CXXFLAGS)
+
+ThreeByThree.o: ThreeByThree.cpp
+	$(CPP) -c ThreeByThree.cpp -o ThreeByThree.o $(CXXFLAGS)
+
+RowNColumn.o: RowNColumn.cpp
+	$(CPP) -c RowNColumn.cpp -o RowNColumn.o $(CXXFLAGS)
