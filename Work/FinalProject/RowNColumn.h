@@ -20,9 +20,9 @@ public:
 	RowNColumn( const int theArray[] );
 	RowNColumn( const string& theName, const int theArray[], const int theType );
 /*  Operators  */
-    friend istream& operator>>( istream& is, RowNColumn rhs );
-    friend bool operator>>( const int lhs[], RowNColumn rhs );
-    friend ostream& operator<<( ostream& os, const RowNColumn rhs );
+    friend istream& operator>>( istream& is, RowNColumn& rhs );
+    friend void operator>>( const int lhs[], RowNColumn& rhs );
+    friend ostream& operator<<( ostream& os, const RowNColumn& rhs );
 	
 /*  Accessors  */
     // Get the 3x3s name

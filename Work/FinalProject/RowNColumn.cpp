@@ -39,7 +39,7 @@ using namespace std;
         type = theType;
     }
 /*  Operators  */	
-    istream& operator>>( istream& is, RowNColumn rhs ) {
+    istream& operator>>( istream& is, RowNColumn& rhs ) {
         int tempValue;
         for( int i(0); i < RowNColumn::LIMIT; i++ ) {
             if( !( is >> tempValue )) {
@@ -51,21 +51,21 @@ using namespace std;
         }
         return is;
     }
-    bool operator>>( const int lhs[], RowNColumn rhs ) {
+    
+    void operator>>( const int lhs[], RowNColumn& rhs ) {
         int tempValues[RowNColumn::LIMIT];
-        bool test = true;
         for( int i(0); i < RowNColumn::LIMIT; i++ ) {
-            if( !( lhs[i] >> tempValues[i] )) {
-                test = false;
-                return test;
+            if( !( tempValues[i] = lhs[i] )) {
+                cout << "Error!!!" << endl;
+                return;
             } else {
                 rhs.SudokuSequence[i] = tempValues[i];
             }
         }
-        return test;
     }
-    ostream& operator<<( ostream& os, const RowNColumn rhs ) {
-        os << rhs.name;
+    
+    ostream& operator<<( ostream& os, const RowNColumn& rhs ) {
+        //os << rhs.name;
         for( int i(0); i < RowNColumn::LIMIT; i++) {
             os << rhs.SudokuSequence[i];
         }
@@ -123,16 +123,6 @@ using namespace std;
                 }
             }
         }
-        /*if( theTest == false ) {
-            switch type {
-                case 0:
-                    cout << "Row " << flush;
-                case 1:
-                    cout << "Column " << flush;
-            }
-            cout << name << ": "
-            for( char i('A') << x */
-        
         return theTest;
     }
 
