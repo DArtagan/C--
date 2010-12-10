@@ -14,6 +14,7 @@ int main();
 
 // Display Functions
 void table( int arrayValues[9][9] );
+void importHeader();
 void givenHeader();
 void solvedHeader();
 

@@ -30,11 +30,16 @@ void table( int arrayValues[9][9] ) {
     cout << lineout << endl;
 }
 
+void importHeader() {
+    system("CLS");
+    cout<<"++++++++++++Sudoku Checker+++++++++++++"<<endl;
+    cout << endl;
+}
+
 void givenHeader() {
     system("CLS");
     cout<<"++++++++++++Sudoku Checker+++++++++++++"<<endl<<endl;
     cout<<"Please enter the original, given sudoku."<<endl;
-    cout<<"Enter all blanks as zeros (0) and separate inputs by a space."<<endl;
     cout << "Enter 10, random values fill the puzzle; enter 11, create a valid puzzle." << endl;
     cout << endl;
 }
@@ -43,7 +48,6 @@ void solvedHeader() {
     system("CLS");
     cout<<"++++++++++++Sudoku Checker+++++++++++++"<<endl<<endl;
     cout<<"Please enter your completed sudoku."<<endl;
-    cout<<"Enter all blanks as zeros (0) and separate inputs by a space."<<endl;
     cout << "Enter 10, random values fill the puzzle; enter 11, create a valid puzzle." << endl;
     cout << endl;
 }

@@ -27,9 +27,9 @@ void readSeed() {
 
 //  Function for populating the RowNColumn classes
 void populate(RowNColumn& roworcolumn, const int solvedpuzzlea[9][9], const int rnumber, const int cnumber) {
-    int tarray[9]={};
+    int tarray[9] = {};
     
-    if(cnumber==10) {
+    if(cnumber == 10) {
         for(int i = 0; i<9; i++) {
             tarray[i] = solvedpuzzlea[rnumber][i];
         }
@@ -53,33 +53,3 @@ void populate(ThreeByThree& box, const int array[9][9], const int col, const int
     }
     tempArray >> box;
 }
-
-/*      Proofreading function
-istream& getInteger( istream& is, const string& prompt,
-       int minval, int maxval, int& input )
-{
-   // as long as cin is readable
-   while( is ) {
-       cout << prompt << ": " << flush;
-       if( is >> input ) {
-           // check against range
-           if( minval<maxval && (input<minval || input>maxval) ) {
-               cout << "error:  value must be within [" <<
-                   minval << "," << maxval << "]." << endl;
-           } else {
-               // all is well, return to the calling function
-               return is;
-           }
-       } else {
-           // there was an error parsing an int,
-           // clear out the rest of the line with getline
-           string dummy;
-           cin.clear(); // required!
-           getline( is, dummy, '\n' );
-           // error message
-           cout << "error parsing an integer from input." << endl;
-       }
-   }
-   return is;
-}
-*/
