@@ -1,0 +1,81 @@
+Ivan Yaremenko
+William Weiskopf
+
+*** Sudoku Puzzle Checker ***
+
+//	Problem Description
+
+For our final project, we have created an application which checks the validity of a Sudoku puzzle solution.
+As the application was becoming too large for the alloted time, the game function scraped.  Replaced by user 
+import or a random puzzle generator which could display either a random filling of the puzzle or a valid solved sudoku puzzle.
+
+//	Program Documentation
+
+At startup, the user has the option to enter a sudoku puzzle that they posess into the program, or they could
+choose to generate a valid solved sudoku puzzle in which case they will be asked for a seed value.
+This is all that is required of the user to use the application. On the otherhad, with more time, the
+random puzzle generator could be developed into generating a puzzle that the user could have a chence of solving,
+not simply displaying the solution. This would in effect would make a sudoku game. Also, after the user has 
+tried playing the game, they could always chech their input with the solution checker and or would have the 
+option to see the solution. Some other features which could be further enhanced by another programer could be
+the use of the test bools in the application to further pinpoint the errors in the input of the user
+when checking their puzzle.
+
+//	Requirements
+
+		
+		[[FinalProject/Requirements/basic|basic requirements]]
+
+-New Class		RowNColumn.cpp & RowNColumn.h
+
+-Use at least 1 array	checker.cpp	lines 16 and 17
+
+-I/O file		checker.pp	lines 64-43 & 122-144 & 236-249
+
+
+		[[FinalProject/Requirements/alacarte|"a la carte" requirements]]
+
+-Additional non-const data members		RowNColumn.h      lines 52-55     3 points
+						ThreeByThree.h    lines 49-51
+
+-Implemented accessor functions			ThreeByThree.h    lines 26-36	  5 points
+						RowNColumn.h	  lines 29-43
+
+-Additional non-trivial class			ThreeByThree.h 			  5 points
+ 
+-Overloaded function				checker.h         lines 23-24     1 point
+
+-Use a 1d array of fundamental types		manipulations.cpp lines 30	  1 point
+						RowNColumn.h	  line 53 
+
+-Use a multidimensional array			checker.cpp	  lines 17-18	  4 points
+						ThreeByThree.h	  line 50
+						manipulations.cpp line 47
+
+-Incorporate randomness				manipulations.cpp lines 14-26	  3 points
+						checker.cpp       lines 86-91
+
+Total Suggested alacarte points: 22
+
+
+//		Reflections
+
+This project has certainly been an excellent experience (much more so then the flu policy assignment XD).
+Doing a project where you have to solve a problem of your choosing thru the implementation of C++
+was certainly a lot more fun then doing nightly assignments (AKA tutorials if you will). Here, we had a 
+chance to actually use what we knew without restrictions (i.e. use a while loop here, name
+your application this, not that..). This assignment, in my opinion at least, had come the closest to what it
+would be like to work as a software engineer for a company, which turned out to be a lot more fun then we anticipated.
+Of course the debugging as well as formatting everything was a rather painfull and slow process, but the end
+result certainly was satisfactory. One important thing that could be improved: making the code more efficient.
+In one instance, there is a loop in the code where a loop manually refreshes the screen after every iteration
+which makes the program run a lot slower. Also, when implementing similar variables, I know for a fact that there is a way
+to do that with a loop, yet we did not have enough time to figure out how to loop thru the names of my variables.
+Thus we manually implementing each variable, which took more lines of code then necessary. Lastly, 
+the main routine in the application (checker.cpp) could be cleaned out a lot more if more of the logic was placed in separate
+files as functions, hence increasing the efficiency of the application and decreasing debugging time. All in all
+this was a great experience and I suggest perhaps dumping some of the individual homework "tutorials" in favor of 
+mabe 1 or 2 mini final projects during the semester where people could get a taste of what the actual final would be like.
+
+
+		
